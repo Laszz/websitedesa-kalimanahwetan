@@ -11,7 +11,7 @@
 
 {{-- Hero Section --}}
 <section class="relative welcome-hero">
-    <img src="{{ asset('images/sawah.jpg') }}" alt="Desa Kalimanah Wetan" class="w-full h-[500px] object-cover absolute inset-0 z-0">
+    <img src="{{ asset('images/Sawah.jpg') }}" alt="Desa Kalimanah Wetan" class="w-full h-[500px] object-cover absolute inset-0 z-0">
     <div class="absolute inset-0 bg-black/50 z-10 flex flex-col items-center justify-center text-center text-white px-4">
         <h1>Selamat Datang di Desa Kalimanah Wetan</h1>
         <p>Website resmi desa untuk informasi pelayanan, berita, dan kegiatan masyarakat.</p>
