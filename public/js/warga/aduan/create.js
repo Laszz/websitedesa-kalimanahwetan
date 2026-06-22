@@ -1,36 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ===== Custom Popup =====
-  function showPopup(title, text, type = 'info') {
-    const overlay = document.getElementById("popupOverlay");
-    const icon = document.getElementById("popupIcon");
-    const titleEl = document.getElementById("popupTitle");
-    const textEl = document.getElementById("popupText");
+  console.log("Warga - Create Aduan loaded");
 
-    const iconMap = {
-      info: 'fa-circle-info',
-      error: 'fa-circle-xmark',
-      success: 'fa-circle-check',
-      warning: 'fa-triangle-exclamation'
-    };
-
-    icon.className = 'popup-icon ' + type;
-    icon.innerHTML = '<i class="fa-solid ' + (iconMap[type] || 'fa-circle-info') + '"></i>';
-
-    titleEl.textContent = title;
-    textEl.textContent = text;
-
-    overlay.classList.add("active");
+  // ====== TAMPILKAN ERROR VALIDASI LARAVEL ======
+  if (window.laravelErrors && window.laravelErrors.length > 0) {
+    let message = window.laravelErrors.join("\n");
+    alert("⚠️ Ada error:\n\n" + message);
   }
 
-  window.closePopup = function() {
-    document.getElementById("popupOverlay").classList.remove("active");
-  };
-
-  document.getElementById("popupOverlay").addEventListener("click", function(e) {
-    if (e.target === this) window.closePopup();
-  });
-
-  // ===== Map Setup =====
+  // ====== MAP SETUP ======
   const defaultLat = -7.41509;
   const defaultLng = 109.3396;
 
@@ -38,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
-    attribution: '&copy; OpenStreetMap'
+    attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
   let marker = L.marker([defaultLat, defaultLng], { draggable: true }).addTo(map);
@@ -47,9 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const lngInput = document.getElementById("longitude");
   const alamatInput = document.getElementById("alamat");
 
+  // Set default input koordinat
   latInput.value = defaultLat;
   lngInput.value = defaultLng;
 
+  // ===== Reverse Geocoding: Koordinat -> Alamat =====
   function updateAddress(lat, lng) {
     fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
       .then(res => res.json())
@@ -58,9 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
         latInput.value = lat;
         lngInput.value = lng;
       })
-      .catch(err => console.error("Gagal ambil alamat:", err));
+      .catch(err => {
+        console.error("Gagal ambil alamat:", err);
+      });
   }
 
+  // ===== Forward Geocoding: Alamat -> Koordinat =====
   function searchAddress(query) {
     fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&q=${encodeURIComponent(query)}`)
       .then(res => res.json())
@@ -69,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const place = results[0];
           const lat = parseFloat(place.lat);
           const lng = parseFloat(place.lon);
+
           marker.setLatLng([lat, lng]);
           map.setView([lat, lng], 17);
           latInput.value = lat;
@@ -78,69 +61,63 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(err => console.error("Gagal mencari alamat:", err));
   }
 
+  // Set default alamat di balai desa
   updateAddress(defaultLat, defaultLng);
 
+  // ===== KLIK PETA → PINDAH MARKER =====
   map.on("click", function(e) {
     const { lat, lng } = e.latlng;
     marker.setLatLng([lat, lng]);
     updateAddress(lat, lng);
   });
 
-  // ===== GPS Button =====
+  // ===== GPS: TOMBOL "LOKASI SAYA" =====
   const locateBtn = document.createElement("button");
   locateBtn.type = "button";
-  locateBtn.innerHTML = "📍 Lokasi Saya";
+  locateBtn.innerHTML = "Lokasi Saya";
   locateBtn.className = "btn-locate";
   locateBtn.style.cssText = "margin-top:8px;padding:8px 16px;background:#2563eb;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:14px;";
-
+  
   locateBtn.addEventListener("click", () => {
-    const isSecure = window.isSecureContext ||
-                     location.hostname === 'localhost' ||
-                     location.hostname === '127.0.0.1' ||
-                     location.protocol === 'https:';
-
-    if (!isSecure) {
-      showPopup("Pilih Lokasi di Peta", "Klik peta untuk menandai lokasi Anda.", "warning");
-      return;
-    }
-
     if (!navigator.geolocation) {
-      showPopup("GPS Tidak Tersedia", "Klik peta untuk memilih lokasi.", "error");
+      alert("Browser tidak mendukung GPS");
       return;
     }
-
-    locateBtn.innerHTML = "⏳ Mendeteksi...";
+    
+    locateBtn.innerHTML = "Mendeteksi...";
     locateBtn.disabled = true;
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
+        
         marker.setLatLng([lat, lng]);
         map.setView([lat, lng], 17);
         updateAddress(lat, lng);
-        locateBtn.innerHTML = "📍 Lokasi Saya";
+        
+        locateBtn.innerHTML = "Lokasi Saya";
         locateBtn.disabled = false;
-        showPopup("Lokasi Dipilih", "Lokasi berhasil disimpan.", "success");
       },
       (error) => {
-        locateBtn.innerHTML = "📍 Lokasi Saya";
+        alert("Gagal mendeteksi lokasi: " + error.message);
+        locateBtn.innerHTML = "Lokasi Saya";
         locateBtn.disabled = false;
-        showPopup("GPS Tidak Tersedia", "Klik peta untuk memilih lokasi.", "error");
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
   });
 
+  // Insert tombol setelah peta
   document.getElementById("map").after(locateBtn);
 
-  // ===== Reset Button =====
+  // ===== TOMBOL RESET KE BALAI DESA =====
   const resetBtn = document.createElement("button");
   resetBtn.type = "button";
-  resetBtn.innerHTML = "🏠 Reset ke Balai Desa";
+  resetBtn.innerHTML = "Reset ke Balai Desa";
   resetBtn.className = "btn-reset";
   resetBtn.style.cssText = "margin-top:8px;margin-left:8px;padding:8px 16px;background:#6b7280;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:14px;";
-
+  
   resetBtn.addEventListener("click", () => {
     marker.setLatLng([defaultLat, defaultLng]);
     map.setView([defaultLat, defaultLng], 17);
@@ -149,11 +126,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   locateBtn.after(resetBtn);
 
+  // ===== MARKER DRAGGABLE → UPDATE ALAMAT =====
   marker.on("dragend", function() {
     const { lat, lng } = marker.getLatLng();
     updateAddress(lat, lng);
   });
 
+  // ===== USER KETIK ALAMAT → UPDATE MARKER (delay 1 detik) =====
   let typingTimeout;
   alamatInput.addEventListener("input", () => {
     clearTimeout(typingTimeout);
