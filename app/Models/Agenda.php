@@ -59,7 +59,7 @@ class Agenda extends Model
         $client->addScope(Calendar::CALENDAR);
 
         $httpClient = new \GuzzleHttp\Client([
-            'verify' => 'C:\php-8.5.3\extras\ssl\cacert.pem',
+            'verify' => storage_path('app/cacert.pem'),
             'timeout' => 30,
         ]);
         $client->setHttpClient($httpClient);
