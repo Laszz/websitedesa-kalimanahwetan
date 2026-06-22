@@ -1,0 +1,57 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: webdesa-kalimanahwetan
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "6310:8080"
+    volumes:
+      - webdesa_storage:/var/www/html/storage/app/public
+    depends_on:
+      - db
+    networks:
+      - webdesa_network
+
+  db:
+    image: mysql:8.0
+    container_name: webdesa_db
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - webdesa_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: webdesa_phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "1283:80"
+    depends_on:
+      - db
+    networks:
+      - webdesa_network
+
+networks:
+  webdesa_network:
+    driver: bridge
+
+volumes:
+  dbdata:
+  webdesa_storage:
