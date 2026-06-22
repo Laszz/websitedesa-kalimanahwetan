@@ -1,4 +1,3 @@
-{{-- resources/views/warga/profile/edit.blade.php --}}
 @extends('layouts.app')
 
 @section('title', 'Edit Profil Warga')

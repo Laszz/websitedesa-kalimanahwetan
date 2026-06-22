@@ -3,9 +3,9 @@
 namespace App\Models\Warga;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;  // ← TAMBAH INI
+use Illuminate\Database\Eloquent\Relations\HasMany;  
 use App\Models\User;
-use App\Models\PenerimaBantuan;  // ← TAMBAH INI
+use App\Models\PenerimaBantuan; 
 
 class Warga extends Model
 {

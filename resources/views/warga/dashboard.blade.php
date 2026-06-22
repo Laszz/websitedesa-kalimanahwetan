@@ -178,7 +178,7 @@
         <h2 class="section-title">Jadwal Kegiatan Desa</h2>
         <div class="calendar-container">
             <iframe
-                src="https://calendar.google.com/calendar/embed?src=desakalimanahwetan@gmail.com&ctz=Asia/Jakarta"
+                src="https://calendar.google.com/calendar/embed?src={{ urlencode(env('GOOGLE_CALENDAR_ID', 'admindesakalimanahwetan@gmail.com')) }}&ctz=Asia%2FJakarta&hl=id&showTz=1&showCalendars=0&mode=MONTH"
                 style="border:0"
                 width="100%"
                 height="600"

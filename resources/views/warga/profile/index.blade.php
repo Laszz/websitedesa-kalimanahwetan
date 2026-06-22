@@ -1,4 +1,3 @@
-{{-- resources/views/warga/profile/index.blade.php --}}
 @extends('layouts.app')
 
 @section('title', 'Profil Warga')
