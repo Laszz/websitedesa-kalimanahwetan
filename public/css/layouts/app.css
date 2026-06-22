@@ -1,0 +1,153 @@
+/* ==== GLOBAL RESET ==== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 60px; /* <-- SAMAIN SAMA NAVBAR HEIGHT */
+}
+
+/* ==== SECTION TITLE ==== */
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #FFD700;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* ==== CARD STYLE ==== */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ==== VIDEO THUMBNAIL ==== */
+.video-thumbnail {
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.video-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+/* ==== FOOTER ==== */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f1f1f1;
+    color: #555;
+    font-size: 14px;
+}
+
+.footer-left {
+    font-weight: 500;
+}
+
+.footer-social a {
+    margin-left: 12px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #1d4ed8;
+}
+
+/* ==== FLASH TOAST NOTIFICATION ==== */
+.flash-toast {
+    position: fixed;
+    top: 80px; /* <-- 60px navbar + 20px jarak */
+    right: 20px;
+    background: #22c55e;
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 400px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.flash-toast.flash-error {
+    background: #ef4444;
+}
+
+.flash-toast button {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+}
+
+.flash-toast button:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Auto hide after 5 seconds */
+.flash-toast {
+    animation: slideInRight 0.4s ease, fadeOut 0.3s ease 4.7s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateX(120%);
+    }
+}

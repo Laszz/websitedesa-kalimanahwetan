@@ -1,0 +1,202 @@
+/* Wrapper full page */
+.profile-page-wrapper {
+    min-height: calc(100vh - 60px);
+    padding: 40px 20px;
+    background-color: #f3f4f6;
+}
+
+/* Container center */
+.profile-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.profile-header {
+    margin-bottom: 24px;
+}
+
+.profile-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+/* ============================================
+   PROFILE CARD
+   ============================================ */
+.profile-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.profile-card-body {
+    padding: 32px;
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+.profile-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+.form-group .required {
+    color: #ef4444;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1f2937;
+    background-color: #f9fafb;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    background-color: #ffffff;
+}
+
+.form-group input.is-invalid,
+.form-group textarea.is-invalid,
+.form-group select.is-invalid {
+    border-color: #ef4444;
+    background-color: #fef2f2;
+}
+
+.invalid-feedback {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 6px;
+}
+
+.form-hint {
+    display: block;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+/* Foto Section */
+.current-foto,
+.preview-foto {
+    margin-top: 12px;
+}
+
+.current-foto small,
+.preview-foto small {
+    display: block;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.foto-preview {
+    max-width: 120px;
+    max-height: 120px;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+    object-fit: cover;
+}
+
+/* ============================================
+   FORM ACTIONS - TOMBOL SEJAJAR
+   ============================================ */
+.form-actions {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 180px;
+}
+
+.btn-save {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.btn-save:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-back {
+    background-color: #6b7280;
+    color: #ffffff;
+}
+
+.btn-back:hover {
+    background-color: #4b5563;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+    .profile-page-wrapper {
+        padding: 20px 16px;
+    }
+
+    .profile-card-body {
+        padding: 24px 20px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .btn {
+        width: 100%;
+        min-width: unset;
+    }
+}

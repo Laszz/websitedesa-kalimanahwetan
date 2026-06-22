@@ -1,0 +1,67 @@
+.aduan-detail-container {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.detail-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.detail-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-item strong {
+    width: 120px;
+    color: #475569;
+    flex-shrink: 0;
+}
+
+.detail-item span {
+    color: #334155;
+}
+
+.detail-img {
+    max-width: 100%;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    margin-top: 0.5rem;
+}
+
+.btn-kembali {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #f3f4f6;
+    color: #374151;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-kembali:hover {
+    background: #e5e7eb;
+    transform: translateX(-2px);
+}

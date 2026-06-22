@@ -1,0 +1,301 @@
+* {
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   ALERTS
+========================================== */
+.jb-alert {
+    border-radius: 10px;
+    border: none;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.9375rem;
+    position: relative;
+}
+
+.jb-alert-success {
+    background: #f0fdf4;
+    color: #166534;
+    border-left: 4px solid #22c55e;
+}
+
+.jb-alert-danger {
+    background: #fef2f2;
+    color: #991b1b;
+    border-left: 4px solid #ef4444;
+}
+
+.jb-alert .btn-close {
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem;
+}
+
+.jb-alert .btn-close:hover {
+    opacity: 1;
+}
+
+/* ==========================================
+   PAGE HEADER
+========================================== */
+.jb-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #e2e8f0;
+    position: relative;
+}
+
+.jb-page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    border-radius: 3px;
+}
+
+.jb-page-title {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: -0.5px;
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+.jb-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border: none;
+    border-radius: 10px;
+    padding: 0.625rem 1.25rem;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.jb-btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+    color: #fff;
+    filter: brightness(1.05);
+    text-decoration: none;
+}
+
+.jb-btn-primary i {
+    font-size: 0.875rem;
+}
+
+/* ==========================================
+   TABLE CARD
+========================================== */
+.jb-table-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.jb-table-card .card-body {
+    padding: 0;
+}
+
+/* ==========================================
+   TABLE
+========================================== */
+.jb-table-responsive {
+    border-radius: 12px;
+}
+
+.jb-table {
+    margin-bottom: 0;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.jb-table thead th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0 1rem;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+    border-top: none;
+    text-align: center;
+    height: 48px;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.jb-table tbody tr {
+    height: 56px;
+    transition: background-color 0.15s ease;
+}
+
+.jb-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.jb-table tbody td {
+    padding: 0 1rem;
+    vertical-align: middle;
+    color: #334155;
+    font-size: 0.9375rem;
+    border-bottom: 1px solid #f1f5f9;
+    border-top: none;
+    height: 56px;
+    line-height: 1;
+}
+
+.jb-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Override Bootstrap table-bordered */
+.jb-table.table-bordered {
+    border: none;
+}
+
+.jb-table.table-bordered thead th,
+.jb-table.table-bordered tbody td {
+    border: none;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.jb-table.table-bordered thead th {
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* Override Bootstrap table-hover */
+.jb-table.table-hover tbody tr:hover td {
+    background-color: #f8fafc;
+}
+
+/* Empty state */
+.jb-table tbody tr td[colspan] {
+    padding: 3rem 1rem;
+    color: #94a3b8;
+    font-size: 0.9375rem;
+    height: auto;
+}
+
+/* ==========================================
+   ACTION BUTTONS
+========================================== */
+.jb-action-group {
+    display: inline-flex;
+    gap: 0.375rem;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.jb-action-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    transition: all 0.2s ease;
+    border: none;
+    flex-shrink: 0;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.jb-action-btn:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.jb-action-btn.btn-warning {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+.jb-action-btn.btn-warning:hover {
+    background: #fef3c7;
+}
+
+.jb-action-btn.btn-danger {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.jb-action-btn.btn-danger:hover {
+    background: #fee2e2;
+}
+
+/* ==========================================
+   DELETE FORM
+========================================== */
+.jb-delete-form {
+    display: inline;
+    margin: 0;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+@media (max-width: 768px) {
+    .jb-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .jb-page-title {
+        font-size: 1.5rem;
+    }
+
+    .jb-table thead th,
+    .jb-table tbody td {
+        padding: 0 0.75rem;
+        font-size: 0.875rem;
+        height: 48px;
+    }
+
+    .jb-action-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .jb-page-header {
+        padding-bottom: 0.75rem;
+    }
+
+    .jb-table-responsive {
+        border-radius: 0;
+    }
+}

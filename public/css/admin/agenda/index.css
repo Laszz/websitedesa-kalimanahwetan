@@ -1,0 +1,324 @@
+/* Container */
+.agenda-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Header */
+.agenda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.agenda-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.agenda-header h1 i {
+    color: #3b82f6;
+}
+
+.agenda-header p {
+    color: #64748b;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.btn-tambah {
+    background: #3b82f6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.btn-tambah:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+}
+
+/* Alert */
+.alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* Stats */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-left: 4px solid;
+}
+
+.stat-aktif { border-left-color: #22c55e; }
+.stat-selesai { border-left-color: #6b7280; }
+.stat-batal { border-left-color: #ef4444; }
+.stat-total { border-left-color: #3b82f6; }
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.stat-aktif .stat-icon { background: #dcfce7; color: #166534; }
+.stat-selesai .stat-icon { background: #f3f4f6; color: #374151; }
+.stat-batal .stat-icon { background: #fee2e2; color: #991b1b; }
+.stat-total .stat-icon { background: #dbeafe; color: #1e40af; }
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    display: block;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* Table Card */
+.table-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.table-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.table-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-header h3 i {
+    color: #3b82f6;
+}
+
+/* Table */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.agenda-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.agenda-table th {
+    background: #f8fafc;
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.agenda-table td {
+    padding: 16px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+    color: #334155;
+}
+
+.agenda-table tr:hover {
+    background: #f8fafc;
+}
+
+/* Agenda Content */
+.agenda-judul {
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.badge-seharian {
+    background: #fef3c7;
+    color: #92400e;
+    margin-left: 8px;
+}
+
+.badge-aktif { background: #dcfce7; color: #166534; }
+.badge-selesai { background: #f3f4f6; color: #374151; }
+.badge-dibatalkan { background: #fee2e2; color: #991b1b; }
+
+.agenda-tanggal, .agenda-waktu, .agenda-lokasi {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.agenda-tanggal i, .agenda-waktu i, .agenda-lokasi i {
+    color: #3b82f6;
+    font-size: 12px;
+}
+
+.text-muted {
+    color: #94a3b8;
+}
+
+/* Aksi */
+.aksi-group {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-aksi {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+}
+
+.btn-edit {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.btn-edit:hover {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-hapus {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.btn-hapus:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.form-hapus {
+    display: inline;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 48px 24px !important;
+}
+
+.empty-icon {
+    font-size: 48px;
+    color: #cbd5e1;
+    margin-bottom: 12px;
+}
+
+.empty-state p {
+    color: #64748b;
+    margin-bottom: 16px;
+}
+
+.btn-tambah-sm {
+    background: #3b82f6;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Pagination */
+.pagination-wrapper {
+    padding: 20px 24px;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .agenda-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,270 @@
+.sejarah-page {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.sejarah-page .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.sejarah-page .btn-outline {
+    background: transparent;
+    color: #6b7280;
+    border: 1px solid #d1d5db;
+}
+
+.sejarah-page .btn-outline:hover {
+    background: #f9fafb;
+    color: #374151;
+    border-color: #9ca3af;
+}
+
+/* --- Hero Section --- */
+.hero-gradient {
+    background: linear-gradient(135deg, #166534 0%, #16a34a 100%);
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.hero-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 1;
+}
+
+.hero-gradient h1 {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.hero-gradient h1 i {
+    font-size: 0.8em;
+    opacity: 0.9;
+}
+
+/* --- Data Desa Section --- */
+.data-desa-section {
+    background: #f8fafc;
+    position: relative;
+    border-radius: 16px;
+    margin-top: 24px;
+}
+
+/* --- Card --- */
+.card-sejarah {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Animasi awal */
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.card-sejarah::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #16a34a, #15803d);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.card-sejarah:hover::before {
+    transform: scaleX(1);
+}
+
+.card-sejarah:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(22, 163, 74, 0.15);
+    border-color: #bbf7d0;
+}
+
+.card-sejarah .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    color: #16a34a;
+}
+
+.card-sejarah .icon i {
+    font-size: 2.5rem;
+    color: #16a34a;
+}
+
+.card-sejarah h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.card-sejarah p {
+    font-size: 1.125rem;
+    color: #16a34a;
+    font-weight: 600;
+}
+
+/* --- Sejarah Section --- */
+.sejarah-section {
+    background: #ffffff;
+    position: relative;
+    border-radius: 16px;
+    margin-top: 24px;
+    border: 1px solid #e2e8f0;
+}
+
+.sejarah-section h2 {
+    color: #1e293b;
+    font-size: 1.875rem;
+    font-weight: 800;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 0.75rem;
+}
+
+.sejarah-section h2 i {
+    color: #16a34a;
+    font-size: 1.5rem;
+}
+
+.sejarah-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #16a34a, #15803d);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+.sejarah-section h2:hover::after {
+    width: 100%;
+}
+
+.sejarah-content {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 3px solid #e2e8f0;
+    transition: border-color 0.4s ease;
+}
+
+.sejarah-content:hover {
+    border-left-color: #16a34a;
+}
+
+.sejarah-content p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #475569;
+    text-align: justify;
+}
+
+.sejarah-content p i.fa-quote-left {
+    color: #16a34a;
+    margin-right: 8px;
+    font-size: 0.9em;
+    opacity: 0.6;
+}
+
+.sejarah-content p i.fa-quote-right {
+    color: #16a34a;
+    margin-left: 8px;
+    font-size: 0.9em;
+    opacity: 0.6;
+}
+
+/* --- Animasi --- */
+.fade-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fade-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-up {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .sejarah-page {
+        padding: 12px;
+    }
+    
+    .hero-gradient {
+        border-radius: 12px;
+    }
+    
+    .hero-gradient h1 {
+        font-size: 1.75rem !important;
+    }
+    
+    .hero-gradient h1 i {
+        font-size: 1.25rem;
+    }
+    
+    .card-sejarah {
+        padding: 1.5rem 1rem;
+    }
+    
+    .card-sejarah .icon i {
+        font-size: 2rem;
+    }
+    
+    .sejarah-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .sejarah-section h2 i {
+        font-size: 1.25rem;
+    }
+    
+    .sejarah-content {
+        padding-left: 1rem;
+    }
+    
+    .sejarah-content p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+}

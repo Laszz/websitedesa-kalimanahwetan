@@ -1,0 +1,248 @@
+.wpb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* --- Header (tanpa tombol) --- */
+.wpb-header {
+    margin-bottom: 1.5rem;
+}
+
+.wpb-header-text {
+    flex: 1;
+}
+
+.wpb-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 0.25rem 0;
+}
+
+.wpb-subtitle {
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* --- Detail Grid --- */
+.wpb-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.wpb-card-full {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+    .wpb-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Card --- */
+.wpb-card {
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    animation: wpb-fade-up 0.5s ease forwards;
+    opacity: 0;
+}
+
+.wpb-card:nth-child(1) { animation-delay: 0.1s; }
+.wpb-card:nth-child(2) { animation-delay: 0.2s; }
+.wpb-card:nth-child(3) { animation-delay: 0.3s; }
+.wpb-card:nth-child(4) { animation-delay: 0.4s; }
+
+.wpb-card-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+}
+
+.wpb-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wpb-card-body {
+    padding: 1.5rem;
+}
+
+/* --- Detail Row --- */
+.wpb-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.wpb-detail-row:last-child {
+    border-bottom: none;
+}
+
+.wpb-detail-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.wpb-detail-value {
+    font-size: 0.9rem;
+    color: #1f2937;
+    font-weight: 600;
+    text-align: right;
+}
+
+.wpb-detail-money {
+    color: #059669;
+    font-size: 1.1rem;
+}
+
+/* --- Status Display --- */
+.wpb-status-display {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.wpb-status-icon {
+    font-size: 2.5rem;
+}
+
+.wpb-status-aktif { color: #10b981; }
+.wpb-status-nonaktif { color: #f59e0b; }
+.wpb-status-dicabut { color: #ef4444; }
+
+.wpb-status-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.wpb-status-label {
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+.wpb-status-value {
+    margin-top: 0.25rem;
+}
+
+/* --- Desil Badge --- */
+.wpb-desil-badge {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.wpb-desil-prioritas {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.wpb-desil-menengah {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+.wpb-desil-tinggi {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+/* --- Keterangan Box --- */
+.wpb-keterangan-box {
+    background: #f9fafb;
+    border-left: 4px solid #3b82f6;
+    padding: 1rem 1.25rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    color: #4b5563;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    min-height: 3rem;
+}
+
+/* --- Tombol Kembali di BAWAH --- */
+.wpb-back-section {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+.wpb-btn-back-bottom {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #6b7280;
+    color: #fff;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.wpb-btn-back-bottom:hover {
+    background: #4b5563;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Animations --- */
+@keyframes wpb-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+    .wpb-container {
+        padding: 1rem;
+    }
+
+    .wpb-title {
+        font-size: 1.4rem;
+    }
+
+    .wpb-detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .wpb-detail-value {
+        text-align: left;
+    }
+
+    .wpb-btn-back-bottom {
+        width: 100%;
+        justify-content: center;
+    }
+}

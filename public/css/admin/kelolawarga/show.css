@@ -1,0 +1,477 @@
+.warga-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* ================================
+   ALERTS
+================================ */
+.warga-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    animation: fadeInUp 0.4s ease-out;
+    position: relative;
+}
+
+.warga-alert-success {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+}
+
+.warga-alert-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+}
+
+.alert-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.alert-text {
+    flex: 1;
+    font-weight: 500;
+}
+
+.alert-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-close:hover {
+    opacity: 1;
+}
+
+/* ================================
+   CARDS
+================================ */
+.warga-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border: 1px solid #f3f4f6;
+    overflow: hidden;
+}
+
+/* ================================
+   PROFILE HEADER
+================================ */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 32px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 700;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+    border: 4px solid white;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.profile-name {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.025em;
+}
+
+.profile-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.meta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: #f3f4f6;
+    color: #4b5563;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: monospace;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+.status-badge.kawin {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-badge.belum-kawin {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.status-badge.cerai-hidup {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-badge.cerai-mati {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Profile Actions */
+.profile-actions {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+    flex-wrap: wrap;
+}
+
+.btn-edit-profile {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-edit-profile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.35);
+    color: white;
+}
+
+.btn-delete-profile {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-delete-profile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.35);
+}
+
+.delete-form {
+    display: inline;
+}
+
+/* ================================
+   INFO GRID
+================================ */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.info-section {
+    padding: 24px;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.info-section:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.info-section:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    color: #4f46e5;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f3f4f6;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    margin: 0 -8px;
+    padding: 14px 8px;
+}
+
+.info-row:hover {
+    background: #f9fafb;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row .info-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    min-width: 120px;
+}
+
+.info-row .info-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+    text-align: right;
+    word-break: break-word;
+    flex: 1;
+}
+
+.alamat-value {
+    line-height: 1.6;
+}
+
+/* Umur Badge */
+.umur-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #dbeafe;
+    color: #1e40af;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* RW/RT Badge */
+.rwrt-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #f3f4f6;
+    color: #4b5563;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: monospace;
+}
+
+/* ================================
+   BACK BUTTON
+================================ */
+.back-wrapper {
+    margin-top: 24px;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    color: #4b5563;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+    background: white;
+}
+
+.btn-back:hover {
+    color: #4f46e5;
+    background: #e0e7ff;
+    border-color: #4f46e5;
+    transform: translateY(-2px);
+}
+
+.btn-back i {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-back:hover i {
+    transform: translateX(-3px);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 1024px) {
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .warga-page {
+        padding: 16px 12px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 32px;
+    }
+
+    .profile-name {
+        font-size: 22px;
+    }
+
+    .profile-meta {
+        justify-content: center;
+    }
+
+    .profile-actions {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-edit-profile,
+    .btn-delete-profile {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .info-row .info-value {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-name {
+        font-size: 20px;
+    }
+
+    .profile-meta {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .meta-badge {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ================================
+   ANIMATIONS
+================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,58 @@
+/* CARD */
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* TABLE GENERAL */
+.table-default {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-default th {
+    background: #f3f4f6;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #444;
+}
+
+.table-default td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* BADGES */
+.badge-info {
+    background: #3b82f6;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+/* BUTTONS SMALL */
+.btn-danger-sm {
+    background: #dc2626;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.btn-danger-sm:hover {
+    background: #b91c1c;
+}
+
+/* LINK */
+a.text-blue-600 {
+    font-weight: 600;
+}
+
+a.text-blue-600:hover {
+    color: #1d4ed8;
+}

@@ -1,0 +1,417 @@
+.ppb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* --- Header --- */
+.ppb-header {
+    margin-bottom: 1.5rem;
+}
+
+.ppb-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 0.25rem 0;
+}
+
+.ppb-subtitle {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* --- Info Card --- */
+.ppb-info-card {
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.ppb-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .ppb-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .ppb-info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ppb-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.ppb-info-label {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.ppb-info-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.ppb-info-money {
+    color: #059669;
+    font-size: 1.1rem;
+}
+
+/* --- Card --- */
+.ppb-card {
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.ppb-card-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ppb-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ppb-card-badge {
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.ppb-card-body {
+    padding: 1.5rem;
+}
+
+/* --- Statistik Desil --- */
+.ppb-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.ppb-stat-item {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.ppb-stat-desil {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.ppb-stat-bar-bg {
+    height: 0.5rem;
+    background: #e5e7eb;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.ppb-stat-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    border-radius: 9999px;
+    transition: width 1s ease;
+    width: 0;
+}
+
+.ppb-stat-count {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* ============================================
+   LIST PENERIMA — FLEXBOX (FIXED ALIGNMENT)
+   ============================================ */
+
+/* Header */
+.ppb-list-header {
+    display: flex;
+    align-items: center;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+    padding: 0.875rem 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.9rem;
+}
+
+/* Row */
+.ppb-list-row {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #f3f4f6;
+    transition: background 0.15s;
+}
+
+.ppb-list-row:hover {
+    background: #f9fafb;
+}
+
+.ppb-list-row:last-child {
+    border-bottom: none;
+}
+
+/* Column Base */
+.ppb-list-col {
+    padding: 0 0.5rem;
+    flex-shrink: 0;
+}
+
+/* Column Widths — FIXED */
+.ppb-list-no {
+    width: 5%;
+    text-align: center;
+}
+
+.ppb-list-nama {
+    width: 35%;
+    text-align: left;
+}
+
+.ppb-list-desil {
+    width: 20%;
+    text-align: center;
+}
+
+.ppb-list-status {
+    width: 20%;
+    text-align: center;
+}
+
+.ppb-list-tanggal {
+    width: 20%;
+    text-align: center;
+}
+
+/* --- Desil Badge --- */
+.ppb-desil-badge {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.ppb-desil-prioritas {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.ppb-desil-menengah {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+.ppb-desil-tinggi {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+/* --- Empty State --- */
+.ppb-empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #9ca3af;
+}
+
+.ppb-empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #d1d5db;
+}
+
+.ppb-empty-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+/* --- Pagination --- */
+.ppb-pagination {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.ppb-pagination nav {
+    display: flex;
+}
+
+.ppb-pagination .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.25rem;
+}
+
+.ppb-pagination .page-item .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    padding: 0 0.75rem;
+    border-radius: 0.375rem;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    color: #374151;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+
+.ppb-pagination .page-item.active .page-link {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: #fff;
+}
+
+.ppb-pagination .page-item .page-link:hover:not(.disabled) {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.ppb-pagination .page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- Tombol Kembali di Bawah --- */
+.ppb-back-section {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+.ppb-btn-back-bottom {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #6b7280;
+    color: #fff;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.ppb-btn-back-bottom:hover {
+    background: #4b5563;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Animations --- */
+@keyframes ppb-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE
+   ============================================ */
+@media (max-width: 640px) {
+    .ppb-container {
+        padding: 1rem;
+    }
+
+    .ppb-title {
+        font-size: 1.4rem;
+    }
+
+    .ppb-stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* List jadi card di mobile */
+    .ppb-list-header {
+        display: none;
+    }
+
+    .ppb-list-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .ppb-list-col {
+        width: 100% !important;
+        text-align: left !important;
+        padding: 0.25rem 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .ppb-list-col::before {
+        font-weight: 600;
+        color: #6b7280;
+    }
+
+    .ppb-list-no::before { content: 'No:'; }
+    .ppb-list-nama::before { content: 'Nama:'; }
+    .ppb-list-desil::before { content: 'Desil:'; }
+    .ppb-list-status::before { content: 'Status:'; }
+    .ppb-list-tanggal::before { content: 'Tanggal Terima:'; }
+
+    .ppb-back-section {
+        margin-top: 1.5rem;
+    }
+
+    .ppb-btn-back-bottom {
+        width: 100%;
+        justify-content: center;
+    }
+}

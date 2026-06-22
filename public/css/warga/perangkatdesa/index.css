@@ -1,0 +1,347 @@
+/* ============================================
+   PERANGKAT DESA - WARGA
+   [FINAL v2] Foto Center Fix
+   ============================================ */
+
+.perangkatdesa-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #1e293b;
+    position: relative;
+    display: inline-block;
+}
+
+/* Garis bawah title biar elegan */
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: #14b8a6;
+    border-radius: 2px;
+}
+
+/* grid */
+.perangkatdesa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    padding: 0 10px;
+}
+
+/* card */
+.perangkat-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.7s ease forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f1f5f9;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Active state */
+.perangkat-card.active {
+    transform: translateY(-4px) scale(0.98);
+    transition: transform 0.15s ease;
+}
+
+/* kepala desa full width */
+.perangkat-card.kepala {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #134e4a 0%, #0d9488 100%);
+    color: #fff;
+    text-align: center;
+    padding: 50px 30px;
+    border: none;
+}
+
+.perangkat-card.kepala .nama {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.perangkat-card.kepala .jabatan {
+    color: rgba(255,255,255,0.85);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* foto */
+.perangkat-card .foto {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 4px solid #f1f5f9;
+    background: #f8fafc;
+    display: block;
+}
+
+.perangkat-card.kepala .foto {
+    border-color: rgba(255,255,255,0.3);
+    width: 140px;
+    height: 140px;
+}
+
+/* ============================================
+   INFO WRAPPER
+   ============================================ */
+.perangkat-card .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+}
+
+.perangkat-card.kepala .info {
+    gap: 8px;
+}
+
+/* teks */
+.perangkat-card .nama {
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #1e293b;
+}
+
+.perangkat-card .jabatan {
+    font-size: 15px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.perangkat-card.kepala .jabatan {
+    color: rgba(255,255,255,0.9);
+}
+
+/* empty state */
+.empty {
+    grid-column: 1 / -1;
+    font-style: italic;
+    color: #94a3b8;
+    padding: 40px;
+    font-size: 16px;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ============================================
+   HOVER EFFECT - DESKTOP ONLY
+   ============================================ */
+@media (min-width: 769px) {
+    .perangkat-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: #14b8a6;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .perangkat-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        border-color: #e2e8f0;
+    }
+
+    .perangkat-card:hover::before {
+        opacity: 1;
+    }
+    
+    .perangkat-card:hover .foto {
+        transform: scale(1.08);
+        border-color: #14b8a6;
+        box-shadow: 0 4px 15px rgba(20, 184, 166, 0.2);
+    }
+    
+    .perangkat-card.kepala:hover .foto {
+        border-color: #fff;
+        transform: scale(1.1);
+    }
+}
+
+/* ============================================
+   TABLET (max-width: 768px)
+   ============================================ */
+@media (max-width: 768px) {
+    .title {
+        font-size: 26px;
+    }
+    
+    .perangkatdesa-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+    }
+    
+    .perangkat-card {
+        padding: 20px 15px;
+    }
+    
+    .perangkat-card .foto {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .perangkat-card.kepala {
+        padding: 35px 20px;
+    }
+    
+    .perangkat-card.kepala .foto {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .perangkat-card::before {
+        display: none;
+    }
+    
+    .perangkat-card:hover,
+    .perangkat-card:active {
+        transform: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    
+    .perangkat-card:hover .foto,
+    .perangkat-card:active .foto {
+        transform: none;
+        border-color: #f1f5f9;
+        box-shadow: none;
+    }
+}
+
+/* ============================================
+   MOBILE (max-width: 480px) - VERTICAL LAYOUT
+   ============================================ */
+@media (max-width: 480px) {
+    .title {
+        font-size: 22px;
+    }
+    
+    .perangkatdesa-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 0 5px;
+    }
+    
+    /* Card VERTICAL: foto tengah, teks tengah */
+    .perangkat-card {
+        padding: 20px 16px;
+        flex-direction: column;  /* ← VERTICAL */
+        text-align: center;
+        align-items: center;     /* ← CENTER HORIZONTAL */
+        justify-content: center;
+        gap: 12px;
+        border-radius: 16px;
+    }
+    
+    .perangkat-card .foto {
+        width: 85px;
+        height: 85px;
+        margin-bottom: 0;
+        border-width: 3px;
+        display: block;
+        margin-left: auto;   /* ← CENTER */
+        margin-right: auto;  /* ← CENTER */
+    }
+    
+    .perangkat-card .info {
+        align-items: center;  /* ← CENTER */
+        gap: 6px;
+        width: 100%;
+    }
+    
+    .perangkat-card .nama {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 2px;
+        color: #1e293b;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Jabatan badge */
+    .perangkat-card .jabatan {
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        display: inline-block;
+        background: #f0fdfa;
+        color: #0d9488;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+    }
+    
+    /* Kepala desa */
+    .perangkat-card.kepala {
+        padding: 30px 20px;
+        gap: 12px;
+    }
+    
+    .perangkat-card.kepala .foto {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .perangkat-card.kepala .nama {
+        font-size: 20px;
+        white-space: normal;
+    }
+    
+    .perangkat-card.kepala .jabatan {
+        font-size: 14px;
+        white-space: normal;
+        background: transparent;
+        color: rgba(255,255,255,0.9);
+        padding: 0;
+    }
+}

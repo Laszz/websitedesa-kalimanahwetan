@@ -1,0 +1,892 @@
+.sumberdana-page {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Page Header */
+.sumberdana-page .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.sumberdana-page .page-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+}
+
+.sumberdana-page .page-subtitle {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.sumberdana-page .header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Card */
+.sumberdana-page .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.sumberdana-page .card-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.sumberdana-page .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sumberdana-page .card-body {
+    padding: 24px;
+}
+
+.sumberdana-page .card-form {
+    max-width: 700px;
+}
+
+/* Alert */
+.sumberdana-page .alert {
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    animation: slideDown 0.3s ease;
+}
+
+.sumberdana-page .alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.sumberdana-page .alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.sumberdana-page .alert-text {
+    flex: 1;
+}
+
+.sumberdana-page .alert-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    line-height: 1;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.sumberdana-page .alert-close:hover {
+    opacity: 1;
+    background: rgba(0,0,0,0.05);
+}
+
+/* Buttons */
+.sumberdana-page .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sumberdana-page .btn-primary {
+    background: #3b82f6;
+    color: #fff;
+}
+
+.sumberdana-page .btn-primary:hover {
+    background: #2563eb;
+}
+
+.sumberdana-page .btn-outline {
+    background: transparent;
+    color: #6b7280;
+    border: 1px solid #d1d5db;
+}
+
+.sumberdana-page .btn-outline:hover {
+    background: #f9fafb;
+    color: #374151;
+}
+
+.sumberdana-page .btn-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.sumberdana-page .btn-warning:hover {
+    background: #fde68a;
+}
+
+.sumberdana-page .btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.sumberdana-page .btn-icon-only {
+    width: 36px;
+    text-decoration: none;
+    height: 36px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.sumberdana-page .btn-view {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.sumberdana-page .btn-view:hover {
+    background: #bfdbfe;
+}
+
+.sumberdana-page .btn-edit {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.sumberdana-page .btn-edit:hover {
+    background: #fde68a;
+}
+
+.sumberdana-page .btn-delete {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.sumberdana-page .btn-delete:hover {
+    background: #fecaca;
+}
+
+.sumberdana-page .btn-icon-only:hover {
+    transform: scale(1.1);
+    text-decoration: none;
+}
+
+.sumberdana-page .action-btns {
+    display: flex;
+    text-decoration: none;
+    gap: 6px;
+}
+
+.sumberdana-page .d-inline {
+    display: inline;
+}
+
+/* Badges */
+.sumberdana-page .status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+.sumberdana-page .status-aktif {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.sumberdana-page .status-terpakai {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.sumberdana-page .status-habis {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.sumberdana-page .status-ditutup {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.sumberdana-page .status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.sumberdana-page .status-terverifikasi {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.sumberdana-page .status-ditolak {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.sumberdana-page .status-direncanakan {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.sumberdana-page .status-disetujui {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.sumberdana-page .status-revisi {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+/* Jenis Badge */
+.sumberdana-page .jenis-badge {
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.sumberdana-page .jenis-apbn {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.sumberdana-page .jenis-apbd_provinsi {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.sumberdana-page .jenis-bkk {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.sumberdana-page .jenis-pad {
+    background: #fce7f3;
+    color: #be185d;
+}
+
+.sumberdana-page .jenis-add {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.sumberdana-page .jenis-dd {
+    background: #ccfbf1;
+    color: #0f766e;
+}
+
+.sumberdana-page .jenis-silpa {
+    background: #f3e8ff;
+    color: #7c3aed;
+}
+
+.sumberdana-page .jenis-lainnya {
+    background: #f3f4f6;
+    color: #4b5563;
+}
+
+.sumberdana-page .count-badge {
+    background: #f3f4f6;
+    color: #374151;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Table */
+.sumberdana-page .table-responsive {
+    overflow-x: auto;
+}
+
+.sumberdana-page .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.sumberdana-page .data-table th {
+    background: #f9fafb;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 2px solid #e5e7eb;
+    white-space: nowrap;
+}
+
+.sumberdana-page .data-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f3f4f6;
+    color: #4b5563;
+}
+
+.sumberdana-page .data-table tr:hover {
+    background: #f9fafb;
+}
+
+.sumberdana-page .text-center {
+    text-align: center;
+}
+
+.sumberdana-page .text-right {
+    text-align: right;
+}
+
+.sumberdana-page .fw-bold {
+    font-weight: 700;
+}
+
+.sumberdana-page .text-success {
+    color: #059669;
+}
+
+.sumberdana-page .text-danger {
+    color: #dc2626;
+}
+
+.sumberdana-page .th-no {
+    width: 50px;
+}
+
+.sumberdana-page .th-aksi {
+    width: 140px;
+}
+
+/* Pagination */
+.sumberdana-page .pagination-wrap {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Empty State */
+.sumberdana-page .empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: #9ca3af;
+}
+
+.sumberdana-page .empty-state-sm {
+    text-align: center;
+    padding: 32px 24px;
+    color: #9ca3af;
+}
+
+.sumberdana-page .empty-text {
+    margin-bottom: 16px;
+}
+
+/* Form */
+.sumberdana-page .form-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sumberdana-page .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.sumberdana-page .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sumberdana-page .form-group-half {
+    width: 100%;
+}
+
+.sumberdana-page .form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.sumberdana-page .form-label.required::after {
+    content: ' *';
+    color: #dc2626;
+}
+
+.sumberdana-page .form-input,
+.sumberdana-page .form-select,
+.sumberdana-page .form-textarea {
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1f2937;
+    background: #fff;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.sumberdana-page .form-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.sumberdana-page .form-input:focus,
+.sumberdana-page .form-select:focus,
+.sumberdana-page .form-textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.sumberdana-page .form-input.is-invalid,
+.sumberdana-page .form-select.is-invalid,
+.sumberdana-page .form-textarea.is-invalid {
+    border-color: #dc2626;
+}
+
+.sumberdana-page .error-message {
+    color: #dc2626;
+    font-size: 13px;
+}
+
+.sumberdana-page .form-hint {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.sumberdana-page .form-hint.warning {
+    color: #d97706;
+}
+
+.sumberdana-page .form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    padding-top: 16px;
+    border-top: 1px solid #f3f4f6;
+}
+
+/* Readonly Info */
+.sumberdana-page .readonly-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px 20px;
+}
+
+.sumberdana-page .readonly-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sumberdana-page .readonly-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sumberdana-page .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sumberdana-page .info-label {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.sumberdana-page .info-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* Tombol Kembali */
+.sumberdana-page .back-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.sumberdana-page .back-actions .btn-outline {
+    background: #fff;
+    border: 1px solid #d1d5db;
+    color: #6b7280;
+    padding: 10px 20px;
+}
+
+.sumberdana-page .back-actions .btn-outline:hover {
+    background: #f9fafb;
+    color: #374151;
+    border-color: #9ca3af;
+}
+
+/* ============================================
+   SUMBER DANA - EDIT (CENTER ALL)
+   ============================================ */
+
+/* === CENTER: Breadcrumb === */
+.sumberdana-edit .page-breadcrumb {
+    justify-content: center;
+}
+
+/* === CENTER: Header === */
+.sumberdana-edit .page-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.sumberdana-edit .page-title,
+.sumberdana-edit .page-subtitle {
+    text-align: center;
+}
+
+/* === CENTER: Card === */
+.sumberdana-edit .card-form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === CENTER: Alert === */
+.sumberdana-edit .alert {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === CENTER: Form actions === */
+.sumberdana-edit .form-actions {
+    justify-content: center;
+    gap: 16px;
+}
+
+/* === CENTER: Back actions === */
+.sumberdana-edit .back-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================
+   SUMBER DANA - CREATE (CENTER ALL)
+   ============================================ */
+
+/* === CENTER: Breadcrumb === */
+.sumberdana-create .page-breadcrumb {
+    justify-content: center;
+}
+
+/* === CENTER: Header === */
+.sumberdana-create .page-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.sumberdana-create .page-title,
+.sumberdana-create .page-subtitle {
+    text-align: center;
+}
+
+/* === CENTER: Card === */
+.sumberdana-create .card-form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === CENTER: Alert === */
+.sumberdana-create .alert {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === CENTER: Form actions (Batal + Simpan) === */
+.sumberdana-create .form-actions {
+    justify-content: center;
+    gap: 16px;
+}
+
+/* === CENTER: Back actions === */
+.sumberdana-create .back-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================
+   SUMBER DANA - SHOW (DETAIL)
+   ============================================ */
+
+.sumberdana-show .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.sumberdana-show .stat-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.sumberdana-show .stat-primary {
+    border-left: 4px solid #3b82f6;
+}
+
+.sumberdana-show .stat-warning {
+    border-left: 4px solid #f59e0b;
+}
+
+.sumberdana-show .stat-success {
+    border-left: 4px solid #10b981;
+}
+
+.sumberdana-show .stat-info {
+    border-left: 4px solid #06b6d4;
+}
+
+.sumberdana-show .stat-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sumberdana-show .stat-label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sumberdana-show .stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+/* Progress */
+.sumberdana-show .progress-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.sumberdana-show .progress-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+}
+
+.sumberdana-show .progress-track {
+    flex: 1;
+    height: 24px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.sumberdana-show .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    border-radius: 12px;
+    transition: width 0.6s ease;
+    width: 0%;
+}
+
+.sumberdana-show .progress-percent {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+    white-space: nowrap;
+}
+
+/* Detail Grid */
+.sumberdana-show .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.sumberdana-show .detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sumberdana-show .detail-full {
+    grid-column: 1 / -1;
+}
+
+.sumberdana-show .detail-label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sumberdana-show .detail-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* ============================================
+   ANIMATION
+   ============================================ */
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .sumberdana-page {
+        padding: 12px;
+    }
+    
+    .sumberdana-page .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .sumberdana-page .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .sumberdana-page .back-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .sumberdana-show .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .sumberdana-page .data-table th,
+    .sumberdana-page .data-table td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    /* === CREATE HP === */
+    .sumberdana-create .page-breadcrumb {
+        flex-wrap: wrap;
+        font-size: 12px;
+        gap: 4px;
+    }
+    
+    .sumberdana-create .page-title {
+        font-size: 20px;
+    }
+    
+    .sumberdana-create .page-subtitle {
+        font-size: 12px;
+    }
+    
+    .sumberdana-create .card-form,
+    .sumberdana-create .alert,
+    .sumberdana-create .back-actions {
+        max-width: 100%;
+    }
+    
+    .sumberdana-create .form-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .sumberdana-create .form-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .sumberdana-create .back-actions {
+        flex-direction: column;
+    }
+    
+    .sumberdana-create .back-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

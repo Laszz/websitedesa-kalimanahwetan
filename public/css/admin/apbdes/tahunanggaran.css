@@ -1,0 +1,937 @@
+/* Page Container */
+.tahunanggaran-page {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Page Header */
+.tahunanggaran-page .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tahunanggaran-page .page-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+}
+
+.tahunanggaran-page .page-subtitle {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* Card */
+.tahunanggaran-page .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.tahunanggaran-page .card-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.tahunanggaran-page .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tahunanggaran-page .card-body {
+    padding: 24px;
+}
+
+.tahunanggaran-page .card-form {
+    max-width: 700px;
+}
+
+/* Alert */
+.tahunanggaran-page .alert {
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    animation: slideDown 0.3s ease;
+}
+
+.tahunanggaran-page .alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.tahunanggaran-page .alert-error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.tahunanggaran-page .alert-text {
+    flex: 1;
+}
+
+.tahunanggaran-page .alert-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    line-height: 1;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.tahunanggaran-page .alert-close:hover {
+    opacity: 1;
+    background: rgba(0,0,0,0.05);
+}
+
+/* Buttons */
+.tahunanggaran-page .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tahunanggaran-page .btn-primary {
+    background: #3b82f6;
+    color: #fff;
+}
+
+.tahunanggaran-page .btn-primary:hover {
+    background: #2563eb;
+}
+
+.tahunanggaran-page .btn-outline {
+    background: transparent;
+    color: #6b7280;
+    border: 1px solid #d1d5db;
+}
+
+.tahunanggaran-page .btn-outline:hover {
+    background: #f9fafb;
+    color: #374151;
+}
+
+.tahunanggaran-page .btn-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.tahunanggaran-page .btn-warning:hover {
+    background: #fde68a;
+}
+
+.tahunanggaran-page .btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.tahunanggaran-page .btn-icon-only {
+    text-decoration: none;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.tahunanggaran-page .btn-view {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.tahunanggaran-page .btn-view:hover {
+    background: #bfdbfe;
+}
+
+.tahunanggaran-page .btn-edit {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.tahunanggaran-page .btn-edit:hover {
+    background: #fde68a;
+}
+
+.tahunanggaran-page .btn-delete {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.tahunanggaran-page .btn-delete:hover {
+    background: #fecaca;
+}
+
+.tahunanggaran-page .btn-icon-only:hover {
+    transform: scale(1.1);
+    text-decoration: none;
+}
+
+.tahunanggaran-page .action-btns {
+    display: flex;
+    gap: 6px;
+}
+
+.tahunanggaran-page .d-inline {
+    display: inline;
+}
+
+/* Status Badge */
+.tahunanggaran-page .status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+.tahunanggaran-page .status-aktif {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.tahunanggaran-page .status-draft {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.tahunanggaran-page .status-ditutup {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.tahunanggaran-page .status-terpakai {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.tahunanggaran-page .status-habis {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Count Badge */
+.tahunanggaran-page .count-badge {
+    background: #f3f4f6;
+    color: #374151;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Table */
+.tahunanggaran-page .table-responsive {
+    overflow-x: auto;
+}
+
+.tahunanggaran-page .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.tahunanggaran-page .data-table th {
+    background: #f9fafb;
+    padding: 12px 16px;
+    text-align: center;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 2px solid #e5e7eb;
+    white-space: nowrap;
+}
+
+.tahunanggaran-page .data-table td {
+    text-align: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid #f3f4f6;
+    color: #4b5563;
+}
+
+.tahunanggaran-page .data-table tr:hover {
+    background: #f9fafb;
+}
+
+.tahunanggaran-page .text-center {
+    text-align: center;
+}
+
+.tahunanggaran-page .text-right {
+    text-align: right;
+}
+
+.tahunanggaran-page .text-lg {
+    font-size: 16px;
+}
+
+.tahunanggaran-page .fw-bold {
+    font-weight: 700;
+}
+
+.tahunanggaran-page .text-success {
+    color: #059669;
+}
+
+.tahunanggaran-page .text-danger {
+    color: #dc2626;
+}
+
+.tahunanggaran-page .th-no {
+    width: 50px;
+}
+
+.tahunanggaran-page .th-aksi {
+    width: 140px;
+}
+
+/* Pagination */
+.tahunanggaran-page .pagination-wrap {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Empty State */
+.tahunanggaran-page .empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: #9ca3af;
+}
+
+.tahunanggaran-page .empty-state-sm {
+    text-align: center;
+    padding: 32px 24px;
+    color: #9ca3af;
+}
+
+.tahunanggaran-page .empty-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.tahunanggaran-page .empty-text {
+    margin-bottom: 16px;
+}
+
+/* Form */
+.tahunanggaran-page .form-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tahunanggaran-page .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tahunanggaran-page .form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.tahunanggaran-page .form-label.required::after {
+    content: ' *';
+    color: #dc2626;
+}
+
+.tahunanggaran-page .form-input,
+.tahunanggaran-page .form-select {
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1f2937;
+    background: #fff;
+    transition: all 0.2s;
+}
+
+.tahunanggaran-page .form-input:focus,
+.tahunanggaran-page .form-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.tahunanggaran-page .form-input.is-invalid,
+.tahunanggaran-page .form-select.is-invalid {
+    border-color: #dc2626;
+}
+
+.tahunanggaran-page .error-message {
+    color: #dc2626;
+    font-size: 13px;
+}
+
+.tahunanggaran-page .form-hint {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.tahunanggaran-page .form-hint.warning {
+    color: #d97706;
+}
+
+.tahunanggaran-page .form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    padding-top: 16px;
+    border-top: 1px solid #f3f4f6;
+}
+
+/* Info Box */
+.tahunanggaran-page .info-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 12px;
+}
+
+.tahunanggaran-page .info-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.tahunanggaran-page .info-content {
+    font-size: 14px;
+    color: #1e40af;
+}
+
+.tahunanggaran-page .bidang-list {
+    margin: 8px 0 0 16px;
+    padding: 0;
+    font-size: 13px;
+    color: #3b82f6;
+}
+
+.tahunanggaran-page .bidang-list li {
+    margin-bottom: 4px;
+}
+
+/* Readonly Info (Edit Page) */
+.tahunanggaran-page .readonly-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px 20px;
+}
+
+.tahunanggaran-page .readonly-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tahunanggaran-page .readonly-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tahunanggaran-page .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tahunanggaran-page .info-label {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.tahunanggaran-page .info-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* Tombol Kembali */
+.tahunanggaran-page .back-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.tahunanggaran-page .back-actions .btn-outline {
+    background: #fff;
+    border: 1px solid #d1d5db;
+    color: #6b7280;
+    padding: 10px 20px;
+}
+
+.tahunanggaran-page .back-actions .btn-outline:hover {
+    background: #f9fafb;
+    color: #374151;
+    border-color: #9ca3af;
+}
+
+/* ============================================
+   TAHUN ANGGARAN - CREATE (CENTER ALL)
+   ============================================ */
+
+/* === CENTER: Breadcrumb === */
+.tahunanggaran-create .page-breadcrumb {
+    justify-content: center;
+}
+
+/* === CENTER: Header === */
+.tahunanggaran-create .page-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.tahunanggaran-create .page-title {
+    text-align: center;
+}
+
+.tahunanggaran-create .page-subtitle {
+    text-align: center;
+}
+
+/* === CENTER: Card === */
+.tahunanggaran-create .card-form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === CENTER: Alert === */
+.tahunanggaran-create .alert {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tahunanggaran-create .form-actions {
+    justify-content: center;   
+    gap: 16px;                 
+}
+
+/* === CENTER: Back actions === */
+.tahunanggaran-create .back-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================
+   TAHUN ANGGARAN - EDIT
+   ============================================ */
+
+   /* === CENTER: Breadcrumb === */
+.tahunanggaran-edit .page-breadcrumb {
+    justify-content: center;
+}
+
+/* === CENTER: Header === */
+.tahunanggaran-edit .page-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.tahunanggaran-edit .page-title {
+    text-align: center;
+}
+
+.tahunanggaran-edit .page-subtitle {
+    text-align: center;
+}
+
+/* === CENTER: Card === */
+.tahunanggaran-edit .card-form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === CENTER: Alert === */
+.tahunanggaran-edit .alert {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tahunanggaran-edit .form-actions {
+    justify-content: center;   
+    gap: 16px;                 
+}
+
+/* === CENTER: Back actions === */
+.tahunanggaran-edit .back-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================
+   TAHUN ANGGARAN - SHOW (DETAIL)
+   ============================================ */
+
+.tahunanggaran-show .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.tahunanggaran-show .stat-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.tahunanggaran-show .stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.tahunanggaran-show .stat-label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tahunanggaran-show .stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+/* Progress Section */
+.tahunanggaran-show .progress-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tahunanggaran-show .progress-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+}
+
+.tahunanggaran-show .progress-track {
+    flex: 1;
+    height: 24px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.tahunanggaran-show .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    border-radius: 12px;
+    transition: width 0.6s ease;
+    width: 0%;
+}
+
+.tahunanggaran-show .progress-percent {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+    white-space: nowrap;
+}
+
+/* Jenis Badge */
+.tahunanggaran-show .jenis-badge {
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.tahunanggaran-show .jenis-apbn {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.tahunanggaran-show .jenis-apbd_provinsi {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.tahunanggaran-show .jenis-bkk {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.tahunanggaran-show .jenis-pad {
+    background: #fce7f3;
+    color: #be185d;
+}
+
+.tahunanggaran-show .jenis-add {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.tahunanggaran-show .jenis-dd {
+    background: #ccfbf1;
+    color: #0f766e;
+}
+
+.tahunanggaran-show .jenis-silpa {
+    background: #f3e8ff;
+    color: #7c3aed;
+}
+
+.tahunanggaran-show .jenis-lainnya {
+    background: #f3f4f6;
+    color: #4b5563;
+}
+
+/* Bidang Grid */
+.tahunanggaran-show .bidang-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+.tahunanggaran-show .bidang-card {
+    background: #f9fafb;
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+}
+
+.tahunanggaran-show .bidang-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.tahunanggaran-show .bidang-kode {
+    background: #3b82f6;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.tahunanggaran-show .bidang-nama {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 14px;
+}
+
+.tahunanggaran-show .bidang-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.tahunanggaran-show .bidang-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.tahunanggaran-show .bidang-stat-label {
+    font-size: 11px;
+    color: #6b7280;
+}
+
+.tahunanggaran-show .bidang-stat-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.tahunanggaran-show .bidang-progress-track {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.tahunanggaran-show .bidang-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    border-radius: 4px;
+    transition: width 0.6s ease;
+    width: 0%;
+}
+
+.tahunanggaran-show .bidang-progress-text {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* ============================================
+   ANIMATION
+   ============================================ */
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .tahunanggaran-page {
+        padding: 12px;
+    }
+    
+    .tahunanggaran-page .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .tahunanggaran-page .back-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tahunanggaran-show .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tahunanggaran-show .bidang-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tahunanggaran-page .data-table th,
+    .tahunanggaran-page .data-table td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+        .tahunanggaran-create .form-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .tahunanggaran-create .form-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .tahunanggaran-create .back-actions {
+        flex-direction: column;
+        max-width: 100%;
+    }
+    
+    .tahunanggaran-create .back-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* === CREATE HP === */
+    .tahunanggaran-create .page-breadcrumb {
+        flex-wrap: wrap;
+        font-size: 12px;
+        gap: 4px;
+    }
+    
+    .tahunanggaran-create .page-title {
+        font-size: 20px;
+    }
+    
+    .tahunanggaran-create .page-subtitle {
+        font-size: 12px;
+    }
+    
+    .tahunanggaran-create .card-form {
+        max-width: 100%;
+    }
+    
+    .tahunanggaran-create .alert {
+        max-width: 100%;
+    }
+    
+    .tahunanggaran-create .back-actions {
+        max-width: 100%;
+    }
+}

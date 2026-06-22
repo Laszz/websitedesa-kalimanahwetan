@@ -1,0 +1,230 @@
+/* Wrapper full page */
+.profile-page-wrapper {
+    min-height: calc(100vh - 60px);
+    padding: 40px 20px;
+    background-color: #f3f4f6;
+}
+
+/* Container center */
+.profile-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.profile-header {
+    margin-bottom: 24px;
+}
+
+.profile-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+/* ============================================
+   PROFILE CARD
+   ============================================ */
+.profile-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.profile-card-body {
+    padding: 32px;
+}
+
+/* ============================================
+   PHOTO SECTION
+   ============================================ */
+.profile-photo-section {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.profile-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #e5e7eb;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-photo-placeholder {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 4px solid #e5e7eb;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-photo-placeholder span {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.profile-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 16px 0 8px;
+}
+
+.profile-email-badge {
+    display: inline-block;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 20px;
+}
+
+/* ============================================
+   DATA TABLE
+   ============================================ */
+.profile-table-wrapper {
+    width: 100%;
+}
+
+.profile-data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.profile-data-table th,
+.profile-data-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-data-table th {
+    width: 38%;
+    font-weight: 600;
+    color: #374151;
+    background-color: #f9fafb;
+}
+
+.profile-data-table td {
+    color: #4b5563;
+}
+
+.profile-data-table tr:last-child th,
+.profile-data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.profile-data-table tr:hover th,
+.profile-data-table tr:hover td {
+    background-color: #f3f4f6;
+}
+
+/* ============================================
+   CARD FOOTER
+   ============================================ */
+.profile-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    background-color: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    gap: 12px;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 180px;
+}
+
+.btn-back {
+    background-color: #6b7280;
+    color: #ffffff;
+}
+
+.btn-back:hover {
+    background-color: #4b5563;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
+}
+
+.btn-edit {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.btn-edit:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+    .profile-page-wrapper {
+        padding: 20px 16px;
+    }
+
+    .profile-card-body {
+        padding: 24px 20px;
+    }
+
+    .profile-photo,
+    .profile-photo-placeholder {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-photo-placeholder span {
+        font-size: 2.5rem;
+    }
+
+    .profile-data-table th,
+    .profile-data-table td {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .profile-data-table th {
+        width: 42%;
+    }
+
+    .profile-card-footer {
+        flex-direction: column-reverse;
+        padding: 20px;
+    }
+
+    .btn {
+        width: 100%;
+        min-width: unset;
+    }
+}

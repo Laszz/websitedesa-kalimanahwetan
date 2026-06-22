@@ -1,0 +1,377 @@
+/* --- Container --- */
+.wpb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* --- Header --- */
+.wpb-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.wpb-header-text {
+    flex: 1;
+}
+
+.wpb-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 0.25rem 0;
+}
+
+.wpb-subtitle {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* --- Counter Row --- */
+.wpb-counter-row {
+    margin-bottom: 1.5rem;
+}
+
+.wpb-counter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .wpb-counter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .wpb-counter-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.wpb-counter-item {
+    animation: wpb-fade-up 0.5s ease forwards;
+    opacity: 0;
+}
+
+.wpb-counter-item:nth-child(1) { animation-delay: 0.1s; }
+.wpb-counter-item:nth-child(2) { animation-delay: 0.2s; }
+.wpb-counter-item:nth-child(3) { animation-delay: 0.3s; }
+.wpb-counter-item:nth-child(4) { animation-delay: 0.4s; }
+
+.wpb-counter-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.wpb-counter-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.wpb-counter-total { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+.wpb-counter-aktif { background: linear-gradient(135deg, #10b981, #059669); }
+.wpb-counter-nonaktif { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.wpb-counter-dicabut { background: linear-gradient(135deg, #ef4444, #dc2626); }
+
+.wpb-counter-icon {
+    font-size: 1.75rem;
+    opacity: 0.9;
+}
+
+.wpb-counter-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.wpb-counter-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+}
+
+.wpb-counter-label {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+}
+
+/* --- Card --- */
+.wpb-card {
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.wpb-card-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wpb-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wpb-card-body {
+    padding: 1.5rem;
+}
+
+/* --- Table --- */
+.wpb-table-responsive {
+    overflow-x: auto;
+}
+
+.wpb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.wpb-table thead th {
+    background: #f9fafb;
+    color: #374151;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.875rem 1rem;
+    border-bottom: 2px solid #e5e7eb;
+    white-space: nowrap;
+}
+
+.wpb-table tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid #f3f4f6;
+    color: #374151;
+    vertical-align: middle;
+}
+
+.wpb-table tbody tr {
+    transition: background 0.15s;
+}
+
+.wpb-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+.wpb-text-center {
+    text-align: center !important;
+}
+
+/* --- Bantuan Name --- */
+.wpb-bantuan-name {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.wpb-bantuan-kode {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin-top: 0.125rem;
+}
+
+/* --- Desil Badge --- */
+.wpb-desil-badge {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.wpb-desil-prioritas {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.wpb-desil-menengah {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+.wpb-desil-tinggi {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+/* --- Status Badge (override dari model) --- */
+.wpb-table .badge {
+    padding: 0.5rem 0.875rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* --- Button Detail --- */
+.wpb-btn-detail {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: #3b82f6;
+    color: #fff;
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.wpb-btn-detail:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+}
+
+/* --- Empty State --- */
+.wpb-empty-state {
+    text-align: center;
+    padding: 3rem 1rem !important;
+    color: #9ca3af;
+}
+
+.wpb-empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #d1d5db;
+}
+
+.wpb-empty-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+}
+
+.wpb-empty-sub {
+    font-size: 0.875rem;
+    color: #9ca3af;
+}
+
+/* --- Pagination --- */
+.wpb-pagination {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.wpb-pagination nav {
+    display: flex;
+}
+
+.wpb-pagination .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.25rem;
+}
+
+.wpb-pagination .page-item .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    padding: 0 0.75rem;
+    border-radius: 0.375rem;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    color: #374151;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+
+.wpb-pagination .page-item.active .page-link {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: #fff;
+}
+
+.wpb-pagination .page-item .page-link:hover:not(.disabled) {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.wpb-pagination .page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- Animations --- */
+@keyframes wpb-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+    .wpb-container {
+        padding: 1rem;
+    }
+
+    .wpb-title {
+        font-size: 1.4rem;
+    }
+
+    .wpb-header {
+        flex-direction: column;
+    }
+
+    .wpb-table thead {
+        display: none;
+    }
+
+    .wpb-table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        padding: 1rem;
+    }
+
+    .wpb-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .wpb-table tbody td:last-child {
+        border-bottom: none;
+    }
+
+    .wpb-table tbody td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #6b7280;
+    }
+}

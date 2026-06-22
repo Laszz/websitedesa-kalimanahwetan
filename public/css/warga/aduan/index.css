@@ -1,0 +1,329 @@
+/* ==================== CONTAINER ==================== */
+.aduan-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* ==================== HEADER ==================== */
+.aduan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.aduan-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+/* ==================== BUTTON ==================== */
+.btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.btn-add:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+/* ==================== LIST ==================== */
+.aduan-list {
+  display: grid;
+  gap: 1.2rem;
+}
+
+/* ==================== CARD ==================== */
+.aduan-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1.5rem;
+  background: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Garis kiri sesuai prioritas */
+.aduan-card.normal  { border-left: 5px solid #6b7280; }
+.aduan-card.penting { border-left: 5px solid #f59e0b; }
+.aduan-card.darurat { border-left: 5px solid #dc2626; }
+
+.aduan-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* ==================== BADGE PUBLIK ==================== */
+.badge-publik {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ==================== JUDUL ==================== */
+.aduan-judul {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.6rem;
+  padding-right: 5rem; /* Biar gak ketiban badge */
+}
+
+/* ==================== PELAPOR (PUBLIK) ==================== */
+.aduan-pelapor {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+/* ==================== META (PRIORITAS & STATUS) ==================== */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.meta-divider {
+  color: #d1d5db;
+  font-weight: 300;
+}
+
+/* ==================== DETAIL ==================== */
+.aduan-detail {
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+/* ==================== LOKASI ==================== */
+.aduan-lokasi {
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+/* ==================== GAMBAR ==================== */
+.aduan-image {
+  margin: 0.8rem 0;
+  text-align: center;
+  display: flex;           
+  justify-content: center; 
+  align-items: center;   
+}
+
+.img-preview {
+  max-width: 100%;
+  width: 280px;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);margin: 0 auto; 
+  cursor: pointer; 
+  transition: transform 0.2s ease; 
+}
+
+.img-preview:hover {
+  transform: scale(1.03);
+}
+
+/* ==================== TANGGAL ==================== */
+.aduan-tanggal {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+/* ==================== STATUS ==================== */
+.status {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status.menunggu { background: #fef3c7; color: #92400e; }
+.status.diproses { background: #dbeafe; color: #1e40af; }
+.status.selesai  { background: #dcfce7; color: #166534; }
+.status.ditolak  { background: #fee2e2; color: #991b1b; }
+
+/* ==================== PRIORITAS ==================== */
+.prioritas {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.prioritas.normal  { background: #f3f4f6; color: #374151; }
+.prioritas.penting { background: #fef3c7; color: #92400e; }
+.prioritas.darurat { background: #fee2e2; color: #991b1b; }
+
+/* ==================== EMPTY STATE ==================== */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #9ca3af;
+}
+
+.empty-text {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* ==================== ALERT ==================== */
+.alert {
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.alert-success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+/* ==================== LIGHTBOX ==================== */
+.img-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.img-lightbox-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.img-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+.img-lightbox-img {
+  position: relative;
+  z-index: 1;
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.img-lightbox-overlay.show .img-lightbox-img {
+  transform: scale(1);
+}
+
+.img-lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;          
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;              
+  transition: all 0.2s ease;
+}
+
+.img-lightbox-close:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 640px) {
+  .aduan-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .aduan-title {
+    font-size: 1.4rem;
+  }
+  
+  .btn-add {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .aduan-card {
+    padding: 1.2rem;
+  }
+  
+  .img-preview {
+    width: 100%;
+    height: 160px;
+  }
+  
+  .badge-publik {
+    position: static;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+  
+  .aduan-judul {
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,454 @@
+/* ============================================
+   BASE
+   ============================================ */
+
+.visi-misi-page {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- Tag Icons --- */
+.visi-tags .tag i {
+    font-size: 0.75em;
+    margin-right: 4px;
+}
+
+/* --- Hero Title Icon --- */
+.visi-misi-title i {
+    font-size: 0.8em;
+    margin-right: 10px;
+    opacity: 0.9;
+}
+
+/* --- CTA Title Icon --- */
+.cta-title i {
+    font-size: 0.9em;
+    margin-right: 8px;
+}
+
+/* ====== HERO SECTION ====== */
+.visi-misi-hero {
+    position: relative;
+    background: linear-gradient(135deg, #166534 0%, #15803d 50%, #22c55e 100%);
+    color: white;
+    text-align: center;
+    padding: 6rem 1rem 8rem;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.visi-misi-title {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+.visi-misi-subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* ====== SECTION BADGE ====== */
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f0fdf4;
+    color: #166534;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border: 2px solid #bbf7d0;
+}
+
+/* ====== VISI CARD ====== */
+.visi-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    border: 1px solid #f0fdf4;
+    position: relative;
+    overflow: hidden;
+}
+
+.visi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #166534, #22c55e);
+}
+
+.visi-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #166534, #22c55e);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    box-shadow: 0 8px 20px rgba(22, 101, 52, 0.3);
+}
+
+.visi-icon i {
+    font-size: 2.5rem;
+}
+
+.visi-content {
+    flex: 1;
+}
+
+.visi-heading {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #166534;
+    margin-bottom: 1rem;
+}
+
+.visi-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #374151;
+}
+
+.visi-text strong {
+    color: #166534;
+    font-weight: 700;
+}
+
+.visi-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.tag {
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.tag-maju { background: #dbeafe; color: #1e40af; }
+.tag-sehat { background: #dcfce7; color: #166534; }
+.tag-mandiri { background: #fef3c7; color: #92400e; }
+.tag-dayasaing { background: #f3e8ff; color: #7c3aed; }
+.tag-sejahtera { background: #fce7f3; color: #be185d; }
+.tag-akhlak { background: #fee2e2; color: #991b1b; }
+
+/* ====== DIVIDER ====== */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.divider-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #166534, transparent);
+}
+
+.divider-icon {
+    color: #166534;
+    font-size: 1.5rem;
+}
+
+/* ====== MISI CARD ====== */
+.misi-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    display: flex;
+    gap: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    border: 1px solid #f0fdf4;
+    position: relative;
+    overflow: hidden;
+}
+
+.misi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #22c55e, #166534);
+}
+
+.misi-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #22c55e, #166534);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+}
+
+.misi-icon i {
+    font-size: 2.5rem;
+}
+
+.misi-content {
+    flex: 1;
+}
+
+.misi-heading {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #166534;
+    margin-bottom: 1.5rem;
+}
+
+/* ====== MISI ITEMS ====== */
+.misi-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    background: #f9fafb;
+    transition: all 0.3s ease;
+    animation: slideInLeft 0.6s ease-out var(--delay) both;
+}
+
+.misi-item:hover {
+    background: #f0fdf4;
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.misi-number {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #166534, #22c55e);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.misi-icon-small {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.misi-icon-small i {
+    font-size: 1.2rem;
+}
+
+.bg-blue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+.bg-green { background: linear-gradient(135deg, #22c55e, #166534); }
+.bg-yellow { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.bg-purple { background: linear-gradient(135deg, #a855f7, #7c3aed); }
+.bg-red { background: linear-gradient(135deg, #ef4444, #dc2626); }
+
+.misi-text-content {
+    flex: 1;
+}
+
+.misi-item-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.misi-item-desc {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+/* ====== CTA SECTION ====== */
+.cta-section {
+    margin-top: 2rem;
+}
+
+.cta-card {
+    background: linear-gradient(135deg, #166534, #15803d);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+}
+
+.cta-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    color: #166534;
+    padding: 0.875rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* ====== ANIMATIONS ====== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* ====== FADE SECTION ====== */
+.fade-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+    .visi-misi-page {
+        padding: 12px;
+    }
+    
+    .visi-misi-hero {
+        border-radius: 12px;
+        padding: 4rem 1rem 6rem;
+    }
+    
+    .visi-misi-title {
+        font-size: 2rem;
+    }
+    
+    .visi-misi-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .visi-card, .misi-card {
+        flex-direction: column;
+        padding: 2rem;
+    }
+    
+    .visi-icon, .misi-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .visi-icon i, .misi-icon i {
+        font-size: 2rem;
+    }
+    
+    .misi-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cta-card {
+        padding: 2rem;
+    }
+    
+    .cta-title {
+        font-size: 1.4rem;
+    }
+}
