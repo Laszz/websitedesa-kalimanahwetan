@@ -136,6 +136,7 @@
             <iframe
                 src="https://calendar.google.com/calendar/embed?src={{ urlencode(env('GOOGLE_CALENDAR_ID', 'admindesakalimanahwetan@gmail.com')) }}&ctz=Asia%2FJakarta&hl=id&showTz=1&showCalendars=0&mode=MONTH"
                 style="border:0"
+                style="border:0"
                 width="100%"
                 height="600"
                 frameborder="0"
@@ -149,7 +150,7 @@
 <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4 text-center">
         <h2 class="section-title">Temukan Kami</h2>
-        <div id="map" style="height: 500px; width: 100%; border-radius: 12px; overflow: hidden;"></div>
+        <div id="map"></div>
     </div>
 </section>
 
