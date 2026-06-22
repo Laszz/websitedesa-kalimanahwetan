@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\warga\Notification;
+namespace App\Http\Controllers\Warga\Notification;
 
 use App\Http\Controllers\Controller;
 use App\Models\Notification;

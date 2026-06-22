@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\DataDesa;
 
 use App\Http\Controllers\Controller;
-use App\Models\warga\Warga;
+use App\Models\Warga\Warga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

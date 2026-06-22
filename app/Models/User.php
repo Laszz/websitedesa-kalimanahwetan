@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPasswordNotification;
 
-use App\Models\warga\Warga; 
+use App\Models\Warga\Warga; 
 use App\Models\Warga\Profile;
 use App\Models\AduanWarga;
 use App\Models\Notification;
