@@ -18,7 +18,7 @@
     </div>
 </section>
 
-{{-- BANTUAN SAYA CARD — BARU --}}
+{{-- BANTUAN SAYA CARD --}}
 @if($bantuanStats['total'] > 0)
 <section class="py-8 bg-gradient-to-r from-blue-50 to-indigo-50">
     <div class="container mx-auto px-4">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 
-                @if($bantuanStats['terbaru'])
+                @if($bantuanStats['terbaru'] && $bantuanStats['terbaru']->id)
                 <div class="bantuan-alert">
                     <div class="bantuan-alert-icon">
                         <i class="fas fa-bell"></i>
