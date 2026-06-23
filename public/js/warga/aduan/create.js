@@ -1,6 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Warga - Create Aduan loaded");
 
+  // ====== ANTI DOUBLE SUBMIT ======
+  const form = document.getElementById("form-aduan");
+  const submitBtn = document.getElementById("btn-submit");
+
+  if (form && submitBtn) {
+    form.addEventListener("submit", function (e) {
+      if (submitBtn.disabled) {
+        e.preventDefault();
+        return false;
+      }
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+    });
+  }
+
+  // Re-enable tombol kalau halaman di-load ulang (error validasi)
+  window.addEventListener("pageshow", function () {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Aduan';
+    }
+  });
+
   // ====== TAMPILKAN ERROR VALIDASI LARAVEL ======
   if (window.laravelErrors && window.laravelErrors.length > 0) {
     let message = window.laravelErrors.join("\n");
@@ -24,11 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const lngInput = document.getElementById("longitude");
   const alamatInput = document.getElementById("alamat");
 
-  // Set default input koordinat
   latInput.value = defaultLat;
   lngInput.value = defaultLng;
 
-  // ===== Reverse Geocoding: Koordinat -> Alamat =====
   function updateAddress(lat, lng) {
     fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
       .then(res => res.json())
@@ -42,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // ===== Forward Geocoding: Alamat -> Koordinat =====
   function searchAddress(query) {
     fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&q=${encodeURIComponent(query)}`)
       .then(res => res.json())
@@ -61,29 +81,26 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(err => console.error("Gagal mencari alamat:", err));
   }
 
-  // Set default alamat di balai desa
   updateAddress(defaultLat, defaultLng);
 
-  // ===== KLIK PETA → PINDAH MARKER =====
   map.on("click", function(e) {
     const { lat, lng } = e.latlng;
     marker.setLatLng([lat, lng]);
     updateAddress(lat, lng);
   });
 
-  // ===== GPS: TOMBOL "LOKASI SAYA" =====
   const locateBtn = document.createElement("button");
   locateBtn.type = "button";
   locateBtn.innerHTML = "Lokasi Saya";
   locateBtn.className = "btn-locate";
   locateBtn.style.cssText = "margin-top:8px;padding:8px 16px;background:#2563eb;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:14px;";
-  
+
   locateBtn.addEventListener("click", () => {
     if (!navigator.geolocation) {
       alert("Browser tidak mendukung GPS");
       return;
     }
-    
+
     locateBtn.innerHTML = "Mendeteksi...";
     locateBtn.disabled = true;
 
@@ -91,11 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
       (position) => {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
-        
+
         marker.setLatLng([lat, lng]);
         map.setView([lat, lng], 17);
         updateAddress(lat, lng);
-        
+
         locateBtn.innerHTML = "Lokasi Saya";
         locateBtn.disabled = false;
       },
@@ -108,16 +125,14 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
-  // Insert tombol setelah peta
   document.getElementById("map").after(locateBtn);
 
-  // ===== TOMBOL RESET KE BALAI DESA =====
   const resetBtn = document.createElement("button");
   resetBtn.type = "button";
   resetBtn.innerHTML = "Reset ke Balai Desa";
   resetBtn.className = "btn-reset";
   resetBtn.style.cssText = "margin-top:8px;margin-left:8px;padding:8px 16px;background:#6b7280;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:14px;";
-  
+
   resetBtn.addEventListener("click", () => {
     marker.setLatLng([defaultLat, defaultLng]);
     map.setView([defaultLat, defaultLng], 17);
@@ -126,13 +141,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   locateBtn.after(resetBtn);
 
-  // ===== MARKER DRAGGABLE → UPDATE ALAMAT =====
   marker.on("dragend", function() {
     const { lat, lng } = marker.getLatLng();
     updateAddress(lat, lng);
   });
 
-  // ===== USER KETIK ALAMAT → UPDATE MARKER (delay 1 detik) =====
   let typingTimeout;
   alamatInput.addEventListener("input", () => {
     clearTimeout(typingTimeout);

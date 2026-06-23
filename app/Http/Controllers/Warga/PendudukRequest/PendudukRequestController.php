@@ -15,9 +15,6 @@ use Illuminate\Validation\ValidationException;
 
 class PendudukRequestController extends Controller
 {
-    // ===============================
-    // INDEX - LIST PENGAJUAN WARGA
-    // ===============================
     public function index()
     {
         $requests = PendudukRequest::with('layanan')
@@ -33,9 +30,6 @@ class PendudukRequestController extends Controller
         return view('warga.pendudukrequest.index', compact('requests', 'notifications'));
     }
 
-    // ===============================
-    // CREATE - FORM PENGAJUAN
-    // ===============================
     public function create($layananId)
     {
         $layanan = LayananPenduduk::findOrFail($layananId);
@@ -47,9 +41,6 @@ class PendudukRequestController extends Controller
         ]);
     }
 
-    // ===============================
-    // SHOW - DETAIL PENGAJUAN
-    // ===============================
     public function show($id)
     {
         $request = PendudukRequest::with([
@@ -73,12 +64,18 @@ class PendudukRequestController extends Controller
         return view('warga.pendudukrequest.show', compact('request', 'availableRequirements'));
     }
 
-    // ===============================
-    // STORE - SIMPAN PERMOHONAN
-    // ===============================
     public function store(Request $request)
     {
         try {
+            // ===== ANTI DOUBLE SUBMIT: CEK TOKEN =====
+            $token = $request->input('submission_token');
+
+            if (session()->has('last_request_token') && session('last_request_token') === $token) {
+                return redirect()->back()
+                    ->with('warning', 'Permohonan sudah dikirim, mohon tunggu.')
+                    ->withInput();
+            }
+
             $request->validate([
                 'layanan_id'   => 'required|exists:layanan_penduduks,id',
                 'catatan_user' => 'nullable|string|max:1000',
@@ -134,6 +131,9 @@ class PendudukRequestController extends Controller
                 }
             }
 
+            // Simpan token ke session
+            session(['last_request_token' => $token]);
+
             return redirect()
                 ->route('warga.pendudukrequest.index')
                 ->with('success', 'Permohonan berhasil diajukan!');
@@ -149,9 +149,6 @@ class PendudukRequestController extends Controller
         }
     }
 
-    // ===============================
-    // UPDATE UPLOAD (FIXED - LOGGING + FORCE UPDATE)
-    // ===============================
     public function updateUpload(Request $request, $uploadId)
     {
         try {
@@ -177,18 +174,15 @@ class PendudukRequestController extends Controller
                     'file.max' => 'File terlalu besar! Ukuran file Anda melebihi 5 MB.',
                 ]);
 
-                // HAPUS file lama
                 $oldPath = $upload->file_path;
                 if ($oldPath && Storage::disk('public')->exists($oldPath)) {
                     Storage::disk('public')->delete($oldPath);
                     \Log::info('EDIT UPLOAD - Old file deleted', ['path' => $oldPath]);
                 }
 
-                // Simpan file baru
                 $newPath = $request->file('file')->store('penduduk_uploads', 'public');
                 \Log::info('EDIT UPLOAD - New file stored', ['path' => $newPath]);
 
-                // FORCE UPDATE database
                 $upload->file_path = $newPath;
                 $upload->save();
 
@@ -227,9 +221,6 @@ class PendudukRequestController extends Controller
         }
     }
 
-    // ===============================
-    // HAPUS UPLOAD
-    // ===============================
     public function destroyUpload($uploadId)
     {
         $upload = PendudukUpload::with('request')
@@ -255,9 +246,6 @@ class PendudukRequestController extends Controller
         return back()->with('success', 'Berkas berhasil dihapus.');
     }
 
-    // ===============================
-    // TAMBAH UPLOAD BARU
-    // ===============================
     public function addUpload(Request $request, $requestId)
     {
         try {
@@ -320,9 +308,6 @@ class PendudukRequestController extends Controller
         }
     }
 
-    // ===============================
-    // VIEW FILE (UPLOAD WARGA)
-    // ===============================
     public function viewFile($id)
     {
         $upload = PendudukUpload::with('request')->findOrFail($id);
@@ -338,9 +323,6 @@ class PendudukRequestController extends Controller
         return response()->file(storage_path('app/public/' . $upload->file_path));
     }
 
-    // ===============================
-    // DOWNLOAD FILE OUTPUT (ADMIN)
-    // ===============================
     public function download($id)
     {
         $request = PendudukRequest::where('user_id', Auth::id())

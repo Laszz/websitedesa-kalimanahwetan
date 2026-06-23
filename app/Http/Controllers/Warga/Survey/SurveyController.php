@@ -9,10 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class SurveyController extends Controller
 {
-    // Tampilkan form survey
     public function create()
     {
-        // Cek apakah sudah isi survey bulan ini
         $alreadyFilled = Survey::where('user_id', Auth::id())
             ->whereMonth('created_at', now()->month)
             ->whereYear('created_at', now()->year)
@@ -25,9 +23,27 @@ class SurveyController extends Controller
         return view('warga.survey.create');
     }
 
-    // Simpan survey
     public function store(Request $request)
     {
+        // ===== ANTI DOUBLE SUBMIT: CEK TOKEN =====
+        $token = $request->input('submission_token');
+
+        if (session()->has('last_survey_token') && session('last_survey_token') === $token) {
+            return redirect()->route('warga.survey.thanks')
+                ->with('warning', 'Survey sudah dikirim.');
+        }
+
+        // ===== CEK DUPLIKAT BULAN INI (race condition protection) =====
+        $alreadyFilled = Survey::where('user_id', Auth::id())
+            ->whereMonth('created_at', now()->month)
+            ->whereYear('created_at', now()->year)
+            ->exists();
+
+        if ($alreadyFilled) {
+            return redirect()->route('warga.survey.thanks')
+                ->with('info', 'Anda sudah mengisi survey bulan ini.');
+        }
+
         $validated = $request->validate([
             'q1_speed'      => 'required|integer|min:1|max:5',
             'q2_friendly'   => 'required|integer|min:1|max:5',
@@ -42,11 +58,13 @@ class SurveyController extends Controller
 
         Survey::create($validated);
 
+        // Simpan token ke session
+        session(['last_survey_token' => $token]);
+
         return redirect()->route('warga.survey.thanks')
             ->with('success', 'Terima kasih telah mengisi survey!');
     }
 
-    // Halaman terima kasih
     public function thanks()
     {
         return view('warga.survey.thanks');

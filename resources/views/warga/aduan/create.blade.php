@@ -9,8 +9,11 @@
 <div class="aduan-form-container">
     <h2 class="form-title">Buat Aduan Baru</h2>
 
-    <form action="{{ route('warga.aduan.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('warga.aduan.store') }}" method="POST" enctype="multipart/form-data" id="form-aduan">
         @csrf
+
+        {{-- TOKEN ANTI DOUBLE SUBMIT --}}
+        <input type="hidden" name="submission_token" value="{{ uniqid('form_', true) }}">
 
         {{-- Judul Aduan --}}
         <label for="judul">Judul Aduan <span class="text-danger">*</span></label>
@@ -61,7 +64,6 @@
         <input type="file" id="gambar" name="gambar" accept="image/*">
         <small class="text-muted d-block">Maksimal ukuran file 10 MB (jpg, jpeg, png)</small>
 
-
         {{-- Peta --}}
         <label for="map">Pilih Lokasi di Peta</label>
         <div id="map" style="height: 300px; margin-bottom: 10px;"></div>
@@ -76,7 +78,9 @@
         <input type="hidden" name="latitude" id="latitude" value="{{ old('latitude') }}">
         <input type="hidden" name="longitude" id="longitude" value="{{ old('longitude') }}">
 
-        <button type="submit" class="btn-submit mt-3">Kirim Aduan</button>
+        <button type="submit" class="btn-submit mt-3" id="btn-submit">
+            <i class="fas fa-paper-plane"></i> Kirim Aduan
+        </button>
     </form>
 </div>
 

@@ -27,6 +27,9 @@
         <form action="{{ route('warga.survey.store') }}" method="POST" id="surveyForm">
             @csrf
 
+            {{-- TOKEN ANTI DOUBLE SUBMIT --}}
+            <input type="hidden" name="submission_token" value="{{ uniqid('srv_', true) }}">
+
             <div class="questions-list">
                 {{-- Q1: Kecepatan --}}
                 <div class="question-item" data-question="1">

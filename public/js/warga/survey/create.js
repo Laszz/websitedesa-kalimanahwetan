@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const value = parseInt(star.dataset.value);
                 hiddenInput.value = value;
 
-                // Update visual
                 stars.forEach((s, i) => {
                     if (i < value) {
                         s.classList.add('selected');
@@ -48,8 +47,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Form validation
+    // Form validation + anti double submit
     form.addEventListener('submit', (e) => {
+        // Cegah submit ganda
+        if (btnSubmit.disabled) {
+            e.preventDefault();
+            return false;
+        }
+
         const requiredFields = ['q1_speed', 'q2_friendly', 'q3_clarity', 'q4_ease', 'q5_overall'];
         let isValid = true;
 
@@ -72,8 +77,16 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Disable button to prevent double submit
+        // Disable tombol + spinner
         btnSubmit.disabled = true;
         btnSubmit.querySelector('.btn-text').textContent = 'Mengirim...';
+    });
+
+    // Re-enable tombol saat halaman di-load ulang (error validasi/back button)
+    window.addEventListener('pageshow', function() {
+        if (btnSubmit) {
+            btnSubmit.disabled = false;
+            btnSubmit.querySelector('.btn-text').textContent = 'Kirim Survey';
+        }
     });
 });

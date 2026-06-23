@@ -42,6 +42,9 @@
 
             @csrf
 
+            {{-- TOKEN ANTI DOUBLE SUBMIT --}}
+            <input type="hidden" name="submission_token" value="{{ uniqid('req_', true) }}">
+
             <input type="hidden" name="layanan_id" value="{{ $layanan->id }}">
 
             {{-- ================= SYARAT ================= --}}

@@ -9,13 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class AduanWargaController extends Controller
 {
-    /**
-     * Halaman daftar aduan (PUBLIK + WARGA)
-     */
     public function index()
     {
-        // ✅ PUBLIK: Tampilin SEMUA aduan yang ditampilkan
-        // ✅ WARGA LOGIN: Bisa filter milik sendiri (opsional)
         $aduans = AduanWarga::where('tampilkan', true)
             ->latest()
             ->get();
@@ -23,19 +18,22 @@ class AduanWargaController extends Controller
         return view('warga.aduan.index', compact('aduans'));
     }
 
-    /**
-     * Halaman buat aduan baru (WARGA LOGIN)
-     */
     public function create()
     {
         return view('warga.aduan.create');
     }
 
-    /**
-     * Simpan aduan baru
-     */
     public function store(Request $request)
     {
+        // ===== ANTI DOUBLE SUBMIT: CEK TOKEN =====
+        $token = $request->input('submission_token');
+
+        if (session()->has('last_aduan_token') && session('last_aduan_token') === $token) {
+            return redirect()->back()
+                ->with('warning', 'Aduan sudah dikirim, mohon tunggu.')
+                ->withInput();
+        }
+
         $validated = $request->validate([
             'judul'     => 'required|string|max:255',
             'nomor_wa'  => 'required|string|regex:/^08[0-9]{8,13}$/',
@@ -49,13 +47,12 @@ class AduanWargaController extends Controller
             'prioritas' => 'required|in:normal,penting,darurat',
         ]);
 
-        // ✅ FIX: Kalau login, pakai data user. Kalau gak login, pakai nama dari input
-        $validated['user_id'] = Auth::id(); // bisa null kalau gak login
-        $validated['nama']    = Auth::check() ? Auth::user()->name : ($validated['nama'] ?? 'Anonim');
-        $validated['status']  = 'menunggu';
+        $validated['user_id']   = Auth::id();
+        $validated['nama']      = Auth::check() ? Auth::user()->name : ($validated['nama'] ?? 'Anonim');
+        $validated['status']    = 'menunggu';
         $validated['tampilkan'] = true;
 
-        // Upload gambar jika ada
+        // Upload gambar
         if ($request->hasFile('gambar')) {
             $validated['gambar'] = $request->file('gambar')
                 ->store('images/foto_aduan_warga', 'public');
@@ -63,7 +60,9 @@ class AduanWargaController extends Controller
 
         AduanWarga::create($validated);
 
-        // ✅ FIX: Redirect beda kalau login vs gak login
+        // Simpan token ke session
+        session(['last_aduan_token' => $token]);
+
         if (Auth::check()) {
             return redirect()->route('warga.aduan.index')
                              ->with('success', 'Aduan berhasil dikirim!');
@@ -73,13 +72,9 @@ class AduanWargaController extends Controller
                          ->with('success', 'Aduan berhasil dikirim!');
     }
 
-    /**
-     * Detail aduan (PUBLIK)
-     */
     public function show($id)
     {
         $aduan = AduanWarga::with('user')->findOrFail($id);
-
         return view('warga.aduan.show', compact('aduan'));
     }
 }
