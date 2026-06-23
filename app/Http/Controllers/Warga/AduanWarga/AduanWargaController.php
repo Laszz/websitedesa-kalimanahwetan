@@ -29,9 +29,13 @@ class AduanWargaController extends Controller
         $token = $request->input('submission_token');
 
         if (session()->has('last_aduan_token') && session('last_aduan_token') === $token) {
-            return redirect()->back()
-                ->with('warning', 'Aduan sudah dikirim, mohon tunggu.')
-                ->withInput();
+            // FIX: Redirect ke index, bukan back ke create
+            if (Auth::check()) {
+                return redirect()->route('warga.aduan.index')
+                    ->with('warning', 'Aduan sudah dikirim, mohon tunggu.');
+            }
+            return redirect()->route('aduan.public.index')
+                ->with('warning', 'Aduan sudah dikirim, mohon tunggu.');
         }
 
         $validated = $request->validate([
@@ -52,7 +56,6 @@ class AduanWargaController extends Controller
         $validated['status']    = 'menunggu';
         $validated['tampilkan'] = true;
 
-        // Upload gambar
         if ($request->hasFile('gambar')) {
             $validated['gambar'] = $request->file('gambar')
                 ->store('images/foto_aduan_warga', 'public');
@@ -60,7 +63,6 @@ class AduanWargaController extends Controller
 
         AduanWarga::create($validated);
 
-        // Simpan token ke session
         session(['last_aduan_token' => $token]);
 
         if (Auth::check()) {
