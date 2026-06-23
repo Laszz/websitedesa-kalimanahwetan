@@ -25,17 +25,12 @@ class AduanWargaController extends Controller
 
     public function store(Request $request)
     {
-        // ===== ANTI DOUBLE SUBMIT: CEK TOKEN =====
         $token = $request->input('submission_token');
 
+        // ===== LAYER 1: Session token =====
         if (session()->has('last_aduan_token') && session('last_aduan_token') === $token) {
-            // FIX: Redirect ke index, bukan back ke create
-            if (Auth::check()) {
-                return redirect()->route('warga.aduan.index')
-                    ->with('warning', 'Aduan sudah dikirim, mohon tunggu.');
-            }
-            return redirect()->route('aduan.public.index')
-                ->with('warning', 'Aduan sudah dikirim, mohon tunggu.');
+            return redirect()->route('warga.aduan.index')
+                ->with('warning', 'Aduan sudah dikirim.');
         }
 
         $validated = $request->validate([
@@ -51,6 +46,18 @@ class AduanWargaController extends Controller
             'prioritas' => 'required|in:normal,penting,darurat',
         ]);
 
+        // ===== LAYER 2: Cek duplikat recent (30 detik) =====
+        $recentDuplicate = AduanWarga::where('user_id', Auth::id())
+            ->where('judul', $validated['judul'])
+            ->where('detail', $validated['detail'])
+            ->where('created_at', '>=', now()->subSeconds(30))
+            ->exists();
+
+        if ($recentDuplicate) {
+            return redirect()->route('warga.aduan.index')
+                ->with('warning', 'Aduan sudah dikirim.');
+        }
+
         $validated['user_id']   = Auth::id();
         $validated['nama']      = Auth::check() ? Auth::user()->name : ($validated['nama'] ?? 'Anonim');
         $validated['status']    = 'menunggu';
@@ -63,6 +70,7 @@ class AduanWargaController extends Controller
 
         AduanWarga::create($validated);
 
+        // Simpan token ke session
         session(['last_aduan_token' => $token]);
 
         if (Auth::check()) {

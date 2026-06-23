@@ -4,20 +4,43 @@ document.addEventListener("DOMContentLoaded", () => {
   // ====== ANTI DOUBLE SUBMIT ======
   const form = document.getElementById("form-aduan");
   const submitBtn = document.getElementById("btn-submit");
+  let isSubmitting = false;
 
   if (form && submitBtn) {
-    form.addEventListener("submit", function (e) {
-      if (submitBtn.disabled) {
+    // Cegah touch ganda di mobile (intercept sebelum click)
+    form.addEventListener("touchstart", function (e) {
+      if (isSubmitting || submitBtn.disabled) {
         e.preventDefault();
+        e.stopPropagation();
         return false;
       }
+    }, { passive: false });
+
+    // Cegah click ganda
+    submitBtn.addEventListener("click", function (e) {
+      if (isSubmitting || submitBtn.disabled) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    });
+
+    form.addEventListener("submit", function (e) {
+      if (isSubmitting || submitBtn.disabled) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+
+      isSubmitting = true;
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
     });
   }
 
-  // Re-enable tombol kalau halaman di-load ulang (error validasi)
+  // Re-enable saat error validasi / back button
   window.addEventListener("pageshow", function () {
+    isSubmitting = false;
     if (submitBtn) {
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Aduan';

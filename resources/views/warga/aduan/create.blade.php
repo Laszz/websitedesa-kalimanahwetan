@@ -85,5 +85,5 @@
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="{{ asset('js/warga/aduan/create.js') }}"></script>
+<script src="{{ asset('js/warga/aduan/create.js') }}?v={{ filemtime(public_path('js/warga/aduan/create.js')) }}"></script>
 @endsection
