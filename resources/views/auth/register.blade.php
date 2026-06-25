@@ -41,6 +41,7 @@
                 <div class="form-group">
                     <label for="kk">No. KK <span class="required">*</span></label>
                     <input id="kk" type="text" name="kk" value="{{ old('kk') }}" required maxlength="16" placeholder="16 digit No. KK" class="numeric-input">
+                    <span class="input-hint" id="kkHint">Masukkan 16 digit angka</span>
                     @error('kk') <p class="text-error">{{ $message }}</p> @enderror
                 </div>
 
