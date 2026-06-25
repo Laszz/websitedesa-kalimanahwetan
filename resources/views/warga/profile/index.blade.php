@@ -20,20 +20,24 @@
             <div class="profile-card-body">
                 
                 {{-- Foto Profil --}}
-                <div class="profile-photo-section">
-                    @if($profile->foto)
-                        <img src="{{ Storage::url($profile->foto) }}" 
-                             alt="Foto Profil" 
-                             class="profile-photo"
-                             id="profilePhoto">
-                    @else
-                        <div class="profile-photo-placeholder">
-                            <span>{{ strtoupper(substr($profile->name, 0, 1)) }}</span>
-                        </div>
-                    @endif
-                    <h3 class="profile-name">{{ $profile->name }}</h3>
-                    <span class="profile-email-badge">{{ $profile->user?->email ?? 'Email belum diatur' }}</span>
-                </div>
+                    <div class="profile-photo-section">
+                        @if($profile->foto)
+                            <div class="profile-photo-wrapper">
+                                <img src="{{ Storage::url($profile->foto) }}" 
+                                    alt="Foto Profil" 
+                                    class="profile-photo"
+                                    id="profilePhoto">
+                            </div>
+                        @else
+                            <div class="profile-photo-wrapper">
+                                <div class="profile-photo-placeholder">
+                                    <span>{{ strtoupper(substr($profile->name, 0, 1)) }}</span>
+                                </div>
+                            </div>
+                        @endif
+                        <h3 class="profile-name">{{ $profile->name }}</h3>
+                        <span class="profile-email-badge">{{ $profile->user?->email ?? 'Email belum diatur' }}</span>
+                    </div>
 
                 {{-- Data Table --}}
                 <div class="profile-table-wrapper">
