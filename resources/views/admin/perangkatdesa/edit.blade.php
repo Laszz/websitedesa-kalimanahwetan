@@ -111,7 +111,7 @@
                 @if($errors->has('urutan'))
                     <span class="error-text">{{ $errors->first('urutan') }}</span>
                 @endif
-                <span class="hint-text">Urutan tampil di halaman publik (0 = pertama)</span>
+                <span class="hint-text">Urutan tampil di halaman publik (1 = pertama)</span>
             </div>
 
             {{-- Foto --}}
