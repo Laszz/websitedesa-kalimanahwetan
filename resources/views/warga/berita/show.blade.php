@@ -33,10 +33,12 @@
     {{-- Share --}}
     <div class="share-section">
         <span>Bagikan:</span>
-        <a href="https://wa.me/?text={{ urlencode($berita->judul . ' - ' . url()->current()) }}" 
-           target="_blank" class="share-btn wa">WhatsApp</a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" 
-           target="_blank" class="share-btn fb">Facebook</a>
+        <div class="share-buttons">
+            <a href="https://wa.me/?text={{ urlencode($berita->judul . ' - ' . url()->current()) }}" 
+            target="_blank" class="share-btn wa">WhatsApp</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" 
+            target="_blank" class="share-btn fb">Facebook</a>
+        </div>
     </div>
 
     {{-- Navigasi --}}

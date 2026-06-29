@@ -120,17 +120,25 @@
 .share-section {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
     margin-bottom: 2rem;
     padding: 1.5rem;
     background: #f9fafb;
     border-radius: 12px;
     animation: fadeInUp 0.8s ease 0.4s both;
+    flex-wrap: wrap;
 }
 
 .share-section span {
     font-weight: 600;
     color: #374151;
+    white-space: nowrap;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
 
 .share-btn {
@@ -140,6 +148,7 @@
     font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.2s;
+    white-space: nowrap;
 }
 
 .share-btn.wa {
@@ -269,6 +278,19 @@
     }
     
     .share-section {
-        flex-wrap: wrap;
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+    
+    .share-buttons {
+        gap: 0.5rem;
+        width: 100%;
+    }
+    
+    .share-btn {
+        flex: 1;
+        text-align: center;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
     }
 }
