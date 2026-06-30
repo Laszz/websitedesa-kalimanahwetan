@@ -80,6 +80,7 @@
 
             {{-- Tampilkan --}}
             <div class="form-check">
+                <input type="hidden" name="tampilkan" value="0">
                 <input type="checkbox" name="tampilkan" value="1" id="tampilkan"
                     {{ old('tampilkan', $aduan->tampilkan) ? 'checked' : '' }}>
                 <label for="tampilkan">Tampilkan di publik</label>
