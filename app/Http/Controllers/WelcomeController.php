@@ -12,7 +12,11 @@ class WelcomeController extends Controller
     public function welcome()
     {
         $beritas = Berita::orderBy('created_at', 'desc')->limit(4)->get();
-        $aduans = AduanWarga::orderBy('created_at', 'desc')->limit(4)->get();
+        
+        $aduans = AduanWarga::where('tampilkan', true)
+            ->orderBy('created_at', 'desc')
+            ->limit(4)
+            ->get();
         
         $agendas = Agenda::mendatang()
             ->where('status', 'aktif')

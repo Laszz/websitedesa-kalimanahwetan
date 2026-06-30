@@ -1,5 +1,4 @@
 <?php
-// app/Http/Controllers/Warga/WargaController.php
 
 namespace App\Http\Controllers\Warga;
 
@@ -37,9 +36,12 @@ class WargaController extends Controller
         }
 
         $beritas = Berita::orderBy('created_at', 'desc')->limit(4)->get();
-        $aduans = AduanWarga::orderBy('created_at', 'desc')->limit(4)->get();
         
-        // TAMBAH: Agenda mendatang dari database
+        $aduans = AduanWarga::where('tampilkan', true)
+            ->orderBy('created_at', 'desc')
+            ->limit(4)
+            ->get();
+        
         $agendas = Agenda::mendatang()
             ->where('status', 'aktif')
             ->limit(5)
