@@ -26,6 +26,7 @@ class AduanWargaController extends Controller
         $aduan = AduanWarga::findOrFail($id);
 
         $validated = $request->validate([
+            'judul'     => 'required|string|max:255',
             'nama'      => 'nullable|string|max:100',
             'nomor_wa'  => 'required|string|max:15',
             'detail'    => 'required|string',
