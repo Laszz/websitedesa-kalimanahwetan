@@ -41,46 +41,6 @@
 }
 
 /* ==========================================
-   BREADCRUMB
-========================================== */
-.pb-breadcrumb {
-    background: transparent;
-    padding: 0;
-    margin-bottom: 1.25rem;
-}
-
-.pb-breadcrumb .breadcrumb {
-    margin: 0;
-    padding: 0;
-    background: none;
-}
-
-.pb-breadcrumb .breadcrumb-item {
-    font-size: 0.875rem;
-}
-
-.pb-breadcrumb .breadcrumb-item a {
-    color: #3b82f6;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.pb-breadcrumb .breadcrumb-item a:hover {
-    color: #2563eb;
-    text-decoration: underline;
-}
-
-.pb-breadcrumb .breadcrumb-item.active {
-    color: #64748b;
-    font-weight: 500;
-}
-
-.pb-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
-    content: "›";
-    color: #cbd5e1;
-}
-
-/* ==========================================
    PAGE HEADER
 ========================================== */
 .pb-page-header {
@@ -110,6 +70,30 @@
     font-weight: 700;
     color: #1e293b;
     letter-spacing: -0.5px;
+}
+
+.pb-header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.pb-btn-export {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #059669;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.pb-btn-export:hover {
+    background-color: #047857;
+    color: #fff;
 }
 
 /* ==========================================

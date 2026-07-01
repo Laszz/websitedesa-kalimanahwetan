@@ -26,9 +26,14 @@
     {{-- Header --}}
     <div class="pb-page-header">
         <h1 class="pb-page-title">Data Penerima Bantuan</h1>
-        <a href="{{ route('admin.penerimabantuan.create') }}" class="pb-btn-primary">
-            <i class="fas fa-plus"></i> Tambah Penerima
-        </a>
+        <div class="pb-header-actions">
+            <a href="{{ route('admin.penerimabantuan.export', request()->query()) }}" class="pb-btn-export">
+                <i class="fas fa-file-excel"></i> Rekap Excel
+            </a>
+            <a href="{{ route('admin.penerimabantuan.create') }}" class="pb-btn-primary">
+                <i class="fas fa-plus"></i> Tambah Penerima
+            </a>
+        </div>
     </div>
 
     {{-- Filter --}}

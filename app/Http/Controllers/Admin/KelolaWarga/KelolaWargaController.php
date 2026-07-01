@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\KelolaWarga;
 use App\Http\Controllers\Controller;
 use App\Models\Warga\Warga;
 use App\Models\User;
+use App\Exports\WargaExport;
+use Maatwebsite\Excel\Facades\Excel; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -108,19 +110,26 @@ class KelolaWargaController extends Controller
     {
         $warga = Warga::findOrFail($id);
 
-        // Hapus foto kalau ada
         if ($warga->foto && Storage::disk('public')->exists($warga->foto)) {
             Storage::disk('public')->delete($warga->foto);
         }
 
-        // Hapus user terkait
         if ($warga->user) {
             $warga->user->delete();
         }
 
-        // Hapus data warga
         $warga->delete();
 
         return redirect()->route('admin.kelolawarga.index')->with('success', 'Data warga dan akun berhasil dihapus');
+    }
+
+    // ← TAMBAH METHOD INI
+    public function export()
+    {
+        $wargas = Warga::with('user')->latest()->get();
+        
+        $filename = 'Rekap_Data_Warga_' . now()->format('d-m-Y_H-i-s') . '.xlsx';
+        
+        return Excel::download(new WargaExport($wargas), $filename);
     }
 }

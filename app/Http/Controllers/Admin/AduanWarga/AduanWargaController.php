@@ -38,7 +38,6 @@ class AduanWargaController extends Controller
             'prioritas' => 'nullable|in:normal,penting,darurat',
             'status'    => 'required|in:menunggu,diproses,selesai',
         ]);
-
         
         $validated['tampilkan'] = $request->boolean('tampilkan');
 

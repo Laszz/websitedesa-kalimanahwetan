@@ -161,10 +161,12 @@ Route::middleware(['auth', 'role:admin'])
             Route::get('/', [AdminPenerimaBantuanController::class, 'index'])->name('index');
             Route::get('/create', [AdminPenerimaBantuanController::class, 'create'])->name('create');
             Route::post('/', [AdminPenerimaBantuanController::class, 'store'])->name('store');
+            Route::get('/export', [AdminPenerimaBantuanController::class, 'export'])->name('export');
             Route::get('/{id}', [AdminPenerimaBantuanController::class, 'show'])->name('show');
             Route::get('/{id}/edit', [AdminPenerimaBantuanController::class, 'edit'])->name('edit');
             Route::put('/{id}', [AdminPenerimaBantuanController::class, 'update'])->name('update');
             Route::delete('/{id}', [AdminPenerimaBantuanController::class, 'destroy'])->name('destroy');
+            
         });
 
         // PERANGKAT DESA
@@ -260,6 +262,7 @@ Route::middleware(['auth', 'role:admin'])
             Route::put('/update/{id}', [KelolaWargaController::class, 'update'])->name('update');
             Route::get('/show/{id}', [KelolaWargaController::class, 'show'])->name('show');
             Route::delete('/hapus/{id}', [KelolaWargaController::class, 'destroy'])->name('destroy');
+            Route::get('/export', [KelolaWargaController::class, 'export'])->name('export');
         });
 
         // ========== AGENDA ==========

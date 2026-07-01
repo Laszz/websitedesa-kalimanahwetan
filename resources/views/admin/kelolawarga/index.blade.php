@@ -18,10 +18,16 @@
             </h1>
             <p class="warga-subtitle">Daftar dan kelola data warga</p>
         </div>
-        <a href="{{ route('admin.kelolawarga.create') }}" class="btn btn-primary">
-            <span class="btn-icon"><i class="fa-solid fa-plus"></i></span>
-            Tambah Warga
-        </a>
+        <div class="header-actions">
+            <a href="{{ route('admin.kelolawarga.export') }}" class="btn btn-success btn-export">
+                <span class="btn-icon"><i class="fa-solid fa-file-excel"></i></span>
+                Rekap Excel
+            </a>
+            <a href="{{ route('admin.kelolawarga.create') }}" class="btn btn-primary">
+                <span class="btn-icon"><i class="fa-solid fa-plus"></i></span>
+                Tambah Warga
+            </a>
+        </div>
     </div>
 
     {{-- Alert Messages --}}

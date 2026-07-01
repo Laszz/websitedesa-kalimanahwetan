@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\PenerimaBantuan;
 use App\Models\JenisBantuan;
 use App\Models\Warga\Warga;
-use App\Events\PenerimaBantuanDitambahkan; // ← TAMBAH
+use App\Exports\PenerimaBantuanExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Events\PenerimaBantuanDitambahkan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,7 +69,6 @@ class PenerimaBantuanController extends Controller
             return redirect()->back()->with('error', 'Warga ini sudah terdaftar untuk jenis bantuan ini.')->withInput();
         }
 
-        // FIX: Simpan ke variable $penerima
         $penerima = PenerimaBantuan::create([
             'warga_id' => $request->warga_id,
             'jenis_bantuan_id' => $request->jenis_bantuan_id,
@@ -78,7 +79,6 @@ class PenerimaBantuanController extends Controller
             'created_by' => Auth::id(),
         ]);
 
-        // FIX: Trigger event notifikasi ke warga
         event(new PenerimaBantuanDitambahkan($penerima));
 
         return redirect()->route('admin.penerimabantuan.index')->with('success', 'Penerima bantuan berhasil ditambahkan');
@@ -140,5 +140,33 @@ class PenerimaBantuanController extends Controller
         $penerima->delete();
 
         return redirect()->route('admin.penerimabantuan.index')->with('success', 'Penerima bantuan berhasil dihapus');
+    }
+
+    // ← TAMBAH METHOD INI
+    public function export(Request $request)
+    {
+        $query = PenerimaBantuan::with(['warga', 'jenisBantuan', 'creator']);
+
+        if ($request->filled('desil')) {
+            $query->byDesil($request->desil);
+        }
+
+        if ($request->filled('jenis_bantuan_id')) {
+            $query->byJenis($request->jenis_bantuan_id);
+        }
+
+        if ($request->filled('status')) {
+            $query->byStatus($request->status);
+        }
+
+        if ($request->filled('keyword')) {
+            $query->searchWarga($request->keyword);
+        }
+
+        $penerimaBantuans = $query->latest()->get();
+
+        $filename = 'Rekap_Penerima_Bantuan_' . now()->format('d-m-Y_H-i-s') . '.xlsx';
+
+        return Excel::download(new PenerimaBantuanExport($penerimaBantuans), $filename);
     }
 }
