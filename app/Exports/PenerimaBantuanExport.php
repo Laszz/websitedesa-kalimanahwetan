@@ -7,9 +7,10 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\WithCustomStartCell; 
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping, WithStyles
+class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping, WithStyles, WithCustomStartCell 
 {
     protected $penerimaBantuans;
 
@@ -24,6 +25,11 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
             return $this->penerimaBantuans;
         }
         return PenerimaBantuan::with(['warga', 'jenisBantuan', 'creator'])->get();
+    }
+
+    public function startCell(): string
+    {
+        return 'A3'; // Header mulai dari baris 3
     }
 
     public function headings(): array
@@ -63,8 +69,28 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
 
     public function styles(Worksheet $sheet)
     {
-        // Header style
-        $sheet->getStyle('A1:J1')->applyFromArray([
+        $tahun = now()->format('Y'); // Tahun sekarang otomatis
+
+        // === JUDUL (Baris 1) ===
+        $sheet->setCellValue('A1', 'Rekap Penerima Bantuan Tahun ' . $tahun);
+        $sheet->mergeCells('A1:J1'); // 10 kolom = A-J
+
+        $sheet->getStyle('A1')->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'size' => 16,
+                'color' => ['rgb' => '1e293b'],
+            ],
+            'alignment' => [
+                'horizontal' => 'center',
+                'vertical' => 'center',
+            ],
+        ]);
+
+        $sheet->getRowDimension('1')->setRowHeight(30);
+
+        // === HEADER (Baris 3) ===
+        $sheet->getStyle('A3:J3')->applyFromArray([
             'font' => [
                 'bold' => true,
                 'color' => ['rgb' => 'FFFFFF'],
@@ -79,14 +105,14 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
             ],
         ]);
 
-        // Auto width for all columns
+        // Auto width
         foreach (range('A', 'J') as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
 
-        // Border for all cells
+        // Border
         $lastRow = $sheet->getHighestRow();
-        $sheet->getStyle("A1:J{$lastRow}")->applyFromArray([
+        $sheet->getStyle("A3:J{$lastRow}")->applyFromArray([
             'borders' => [
                 'allBorders' => [
                     'borderStyle' => 'thin',
@@ -95,8 +121,20 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
             ],
         ]);
 
-        // Center alignment for No column
-        $sheet->getStyle("A2:A{$lastRow}")->getAlignment()->setHorizontal('center');
+        // Center alignment No
+        $sheet->getStyle("A4:A{$lastRow}")->getAlignment()->setHorizontal('center');
+
+        // Status color coding
+        for ($row = 4; $row <= $lastRow; $row++) {
+            $statusCell = $sheet->getCell("F{$row}")->getValue();
+            if ($statusCell === 'Aktif') {
+                $sheet->getStyle("F{$row}")->getFont()->getColor()->setRGB('059669');
+            } elseif ($statusCell === 'Nonaktif') {
+                $sheet->getStyle("F{$row}")->getFont()->getColor()->setRGB('D97706');
+            } elseif ($statusCell === 'Dicabut') {
+                $sheet->getStyle("F{$row}")->getFont()->getColor()->setRGB('DC2626');
+            }
+        }
 
         return [];
     }
