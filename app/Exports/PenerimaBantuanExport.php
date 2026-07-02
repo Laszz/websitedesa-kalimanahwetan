@@ -29,7 +29,7 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
 
     public function startCell(): string
     {
-        return 'A3'; // Header mulai dari baris 3
+        return 'A3'; 
     }
 
     public function headings(): array
@@ -69,11 +69,10 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
 
     public function styles(Worksheet $sheet)
     {
-        $tahun = now()->format('Y'); // Tahun sekarang otomatis
+        $tahun = now()->format('Y'); 
 
-        // === JUDUL (Baris 1) ===
         $sheet->setCellValue('A1', 'Rekap Penerima Bantuan Tahun ' . $tahun);
-        $sheet->mergeCells('A1:J1'); // 10 kolom = A-J
+        $sheet->mergeCells('A1:J1'); 
 
         $sheet->getStyle('A1')->applyFromArray([
             'font' => [
@@ -89,7 +88,6 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
 
         $sheet->getRowDimension('1')->setRowHeight(30);
 
-        // === HEADER (Baris 3) ===
         $sheet->getStyle('A3:J3')->applyFromArray([
             'font' => [
                 'bold' => true,
@@ -105,12 +103,10 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
             ],
         ]);
 
-        // Auto width
         foreach (range('A', 'J') as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
 
-        // Border
         $lastRow = $sheet->getHighestRow();
         $sheet->getStyle("A3:J{$lastRow}")->applyFromArray([
             'borders' => [
@@ -121,10 +117,8 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
             ],
         ]);
 
-        // Center alignment No
         $sheet->getStyle("A4:A{$lastRow}")->getAlignment()->setHorizontal('center');
 
-        // Status color coding
         for ($row = 4; $row <= $lastRow; $row++) {
             $statusCell = $sheet->getCell("F{$row}")->getValue();
             if ($statusCell === 'Aktif') {

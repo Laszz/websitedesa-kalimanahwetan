@@ -27,10 +27,9 @@ class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyl
         return Warga::with('user')->get();
     }
 
-    // ← TAMBAH: Tentukan cell mulai
     public function startCell(): string
     {
-        return 'A3'; // Header mulai dari baris 3, baris 1-2 untuk judul
+        return 'A3'; 
     }
 
     public function headings(): array
@@ -80,11 +79,11 @@ class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyl
 
     public function styles(Worksheet $sheet)
     {
-        $tahun = now()->format('Y'); // Tahun sekarang otomatis
+        $tahun = now()->format('Y'); 
 
-        // === JUDUL (Baris 1) ===
+        
         $sheet->setCellValue('A1', 'Rekap Kelola Warga Tahun ' . $tahun);
-        $sheet->mergeCells('A1:O1'); // Merge sesuai jumlah kolom (15 kolom = A-O)
+        $sheet->mergeCells('A1:O1'); 
 
         $sheet->getStyle('A1')->applyFromArray([
             'font' => [
@@ -100,7 +99,7 @@ class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyl
 
         $sheet->getRowDimension('1')->setRowHeight(30);
 
-        // === HEADER (Baris 3) ===
+        
         $sheet->getStyle('A3:O3')->applyFromArray([
             'font' => [
                 'bold' => true,
@@ -116,12 +115,12 @@ class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyl
             ],
         ]);
 
-        // Auto width
+        
         foreach (range('A', 'O') as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
 
-        // Border untuk semua data
+        
         $lastRow = $sheet->getHighestRow();
         $sheet->getStyle("A3:O{$lastRow}")->applyFromArray([
             'borders' => [
@@ -132,7 +131,7 @@ class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyl
             ],
         ]);
 
-        // Center alignment untuk No
+        
         $sheet->getStyle("A4:A{$lastRow}")->getAlignment()->setHorizontal('center');
 
         return [];
