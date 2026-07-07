@@ -7,10 +7,10 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStyles;
-use Maatwebsite\Excel\Concerns\WithCustomStartCell; 
+use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyles, WithCustomStartCell 
+class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyles, WithCustomStartCell
 {
     protected $wargas;
 
@@ -29,7 +29,7 @@ class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyl
 
     public function startCell(): string
     {
-        return 'A3'; 
+        return 'A3';
     }
 
     public function headings(): array
@@ -79,11 +79,11 @@ class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyl
 
     public function styles(Worksheet $sheet)
     {
-        $tahun = now()->format('Y'); 
+        $tahun = now()->format('Y');
 
-        
+        // === JUDUL ATAS (Baris 1) ===
         $sheet->setCellValue('A1', 'Rekap Kelola Warga Tahun ' . $tahun);
-        $sheet->mergeCells('A1:O1'); 
+        $sheet->mergeCells('A1:O1');
 
         $sheet->getStyle('A1')->applyFromArray([
             'font' => [
@@ -99,7 +99,7 @@ class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyl
 
         $sheet->getRowDimension('1')->setRowHeight(30);
 
-        
+        // === HEADER (Baris 3) ===
         $sheet->getStyle('A3:O3')->applyFromArray([
             'font' => [
                 'bold' => true,
@@ -115,12 +115,12 @@ class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyl
             ],
         ]);
 
-        
+        // Auto width
         foreach (range('A', 'O') as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
 
-        
+        // Border untuk header + data
         $lastRow = $sheet->getHighestRow();
         $sheet->getStyle("A3:O{$lastRow}")->applyFromArray([
             'borders' => [
@@ -131,8 +131,27 @@ class WargaExport implements FromCollection, WithHeadings, WithMapping, WithStyl
             ],
         ]);
 
-        
+        // Center alignment untuk No
         $sheet->getStyle("A4:A{$lastRow}")->getAlignment()->setHorizontal('center');
+
+        // === JUDUL BAWAH (Baris setelah data terakhir) ===
+        $footerRow = $lastRow + 2;
+        $sheet->setCellValue("A{$footerRow}", 'Desa Kalimanah Wetan');
+        $sheet->mergeCells("A{$footerRow}:O{$footerRow}");
+
+        $sheet->getStyle("A{$footerRow}")->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'size' => 12,
+                'color' => ['rgb' => '475569'],
+            ],
+            'alignment' => [
+                'horizontal' => 'center',
+                'vertical' => 'center',
+            ],
+        ]);
+
+        $sheet->getRowDimension($footerRow)->setRowHeight(25);
 
         return [];
     }
