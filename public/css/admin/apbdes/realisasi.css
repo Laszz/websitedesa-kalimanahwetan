@@ -1287,6 +1287,32 @@
     margin-right: 0;
 }
 
+.input-rupiah {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.rupiah-prefix {
+    position: absolute;
+    left: 12px;
+    font-weight: 600;
+    color: #374151;
+    user-select: none;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.rupiah-input {
+    padding-left: 42px !important;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+}
+
+.rupiah-input::placeholder {
+    color: #9ca3af;
+}
+
 /* ============================================
    ANIMATION
    ============================================ */

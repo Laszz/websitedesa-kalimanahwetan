@@ -12,9 +12,55 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(style);
     }
 
-    // === UTILITIES ===
-    const formatRupiah = (num) => 'Rp ' + new Intl.NumberFormat('id-ID').format(num);
+    // === RUPIAH FORMATTER ===
+    const formatRupiahInput = (angka) => {
+        const number = angka.replace(/\D/g, '');
+        return number.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    };
 
+    const parseRupiah = (formatted) => {
+        return parseInt(formatted.replace(/\./g, ''), 10) || 0;
+    };
+
+    const formatRupiahDisplay = (num) => 'Rp ' + new Intl.NumberFormat('id-ID').format(num);
+
+    const initRupiahInput = (input) => {
+        if (!input) return;
+
+        // Format saat load (untuk old value)
+        if (input.value) {
+            input.value = formatRupiahInput(input.value);
+        }
+
+        input.addEventListener('input', function(e) {
+            const caret = this.selectionStart;
+            const oldLen = this.value.length;
+            const oldDots = (this.value.match(/\./g) || []).length;
+
+            this.value = formatRupiahInput(this.value);
+
+            const newDots = (this.value.match(/\./g) || []).length;
+            const newLen = this.value.length;
+            const offset = newDots - oldDots;
+            const newCaret = caret + (newLen - oldLen) + offset;
+
+            this.setSelectionRange(newCaret, newCaret);
+        });
+
+        input.addEventListener('paste', function(e) {
+            e.preventDefault();
+            const paste = (e.clipboardData || window.clipboardData).getData('text');
+            this.value = formatRupiahInput(paste);
+        });
+
+        input.addEventListener('keypress', function(e) {
+            if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+                e.preventDefault();
+            }
+        });
+    };
+
+    // === UTILITIES ===
     const initAlertClose = (container = document) => {
         container.querySelectorAll('.alert-close').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -120,6 +166,9 @@ document.addEventListener('DOMContentLoaded', () => {
         initAlertClose(createWrapper);
         autoDismissAlerts(createWrapper);
 
+        // Init rupiah input
+        initRupiahInput(createWrapper.querySelector('#nominal_digunakan'));
+
         const alokasiSelect = createWrapper.querySelector('#pengalokasian_dana_id');
         const nominalInput = createWrapper.querySelector('#nominal_digunakan');
         const sisaInfo = createWrapper.querySelector('#sisaInfo');
@@ -131,12 +180,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentSisa = 0;
 
         const validateNominal = () => {
-            const val = parseFloat(nominalInput?.value) || 0;
+            const val = parseRupiah(nominalInput?.value || '0');
             if (!nominalHint || !btnSubmit) return;
 
             if (val > currentSisa && currentSisa > 0) {
                 nominalInput?.classList.add('is-invalid');
-                nominalHint.innerHTML = `<i class="fas fa-circle-xmark"></i> Melebihi sisa! Maksimal: ${formatRupiah(currentSisa)}`;
+                nominalHint.innerHTML = `<i class="fas fa-circle-xmark"></i> Melebihi sisa! Maksimal: ${formatRupiahDisplay(currentSisa)}`;
                 nominalHint.classList.add('warning');
                 btnSubmit.disabled = true;
             } else if (val < 0) {
@@ -146,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnSubmit.disabled = true;
             } else {
                 nominalInput?.classList.remove('is-invalid');
-                nominalHint.innerHTML = currentSisa > 0 ? `<i class="fas fa-info-circle"></i> Maksimal: ${formatRupiah(currentSisa)}` : '<i class="fas fa-info-circle"></i> Maksimal sesuai sisa alokasi';
+                nominalHint.innerHTML = currentSisa > 0 ? `<i class="fas fa-info-circle"></i> Maksimal: ${formatRupiahDisplay(currentSisa)}` : '<i class="fas fa-info-circle"></i> Maksimal sesuai sisa alokasi';
                 nominalHint.classList.remove('warning');
                 btnSubmit.disabled = false;
             }
@@ -157,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const selected = alokasiSelect.options[alokasiSelect.selectedIndex];
                 if (selected?.value) {
                     currentSisa = parseFloat(selected.dataset.sisa) || 0;
-                    if (sisaValue) sisaValue.textContent = formatRupiah(currentSisa);
+                    if (sisaValue) sisaValue.textContent = formatRupiahDisplay(currentSisa);
                     if (sisaInfo) sisaInfo.style.display = 'flex';
                     validateNominal();
                 } else {
@@ -178,10 +227,10 @@ document.addEventListener('DOMContentLoaded', () => {
         initFilePreview(createWrapper);
 
         form?.addEventListener('submit', (e) => {
-            const val = parseFloat(nominalInput?.value) || 0;
+            const val = parseRupiah(nominalInput?.value || '0');
             if (val > currentSisa && currentSisa > 0) {
                 e.preventDefault();
-                alert(`Nominal melebihi sisa alokasi (${formatRupiah(currentSisa)})`);
+                alert(`Nominal melebihi sisa alokasi (${formatRupiahDisplay(currentSisa)})`);
                 nominalInput?.focus();
             }
         });
@@ -212,6 +261,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (editWrapper) {
         initAlertClose(editWrapper);
         autoDismissAlerts(editWrapper);
+
+        // Init rupiah input
+        initRupiahInput(editWrapper.querySelector('#nominal_digunakan'));
 
         initFilePreview(editWrapper);
 

@@ -118,13 +118,22 @@
                         <label for="nominal_digunakan" class="form-label required">
                             <i class="fas fa-money-bill-wave"></i> Nominal Digunakan (Rp)
                         </label>
-                        <input type="number" name="nominal_digunakan" id="nominal_digunakan" class="form-input @error('nominal_digunakan') is-invalid @enderror" value="{{ old('nominal_digunakan') }}" placeholder="0" min="0" step="0.01" required>
+                        <div class="input-rupiah">
+                            <span class="rupiah-prefix">Rp</span>
+                            <input type="text" name="nominal_digunakan" id="nominal_digunakan" 
+                                class="form-input rupiah-input @error('nominal_digunakan') is-invalid @enderror" 
+                                value="{{ old('nominal_digunakan') }}" 
+                                placeholder="0" 
+                                inputmode="numeric" 
+                                autocomplete="off" 
+                                required>
+                        </div>
                         @error('nominal_digunakan')
                             <span class="error-message"><i class="fas fa-exclamation-triangle"></i> {{ $message }}</span>
                         @enderror
                         <span class="form-hint" id="nominalHint"><i class="fas fa-info-circle"></i> Maksimal sesuai sisa alokasi</span>
                     </div>
-                </div>
+                </div>  
 
                 <div class="form-group">
                     <label for="keterangan_pemakaian" class="form-label required">

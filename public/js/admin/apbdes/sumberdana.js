@@ -5,6 +5,53 @@
 (function() {
     'use strict';
 
+    // === RUPIAH FORMATTER ===
+    const formatRupiahInput = (angka) => {
+        const number = angka.replace(/\D/g, '');
+        return number.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    };
+
+    const parseRupiah = (formatted) => {
+        return parseInt(formatted.replace(/\./g, ''), 10) || 0;
+    };
+
+    const formatRupiahDisplay = (num) => 'Rp ' + new Intl.NumberFormat('id-ID').format(num);
+
+    const initRupiahInput = (input) => {
+        if (!input) return;
+
+        if (input.value) {
+            input.value = formatRupiahInput(input.value);
+        }
+
+        input.addEventListener('input', function(e) {
+            const caret = this.selectionStart;
+            const oldLen = this.value.length;
+            const oldDots = (this.value.match(/\./g) || []).length;
+
+            this.value = formatRupiahInput(this.value);
+
+            const newDots = (this.value.match(/\./g) || []).length;
+            const newLen = this.value.length;
+            const offset = newDots - oldDots;
+            const newCaret = caret + (newLen - oldLen) + offset;
+
+            this.setSelectionRange(newCaret, newCaret);
+        });
+
+        input.addEventListener('paste', function(e) {
+            e.preventDefault();
+            const paste = (e.clipboardData || window.clipboardData).getData('text');
+            this.value = formatRupiahInput(paste);
+        });
+
+        input.addEventListener('keypress', function(e) {
+            if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+                e.preventDefault();
+            }
+        });
+    };
+
     // Helper: Animate number counter
     function animateCounter(element, targetValue, prefix, suffix, duration) {
         let current = 0;
@@ -23,7 +70,7 @@
     }
 
     // Helper: Parse Rupiah string to number
-    function parseRupiah(text) {
+    function parseRupiahOld(text) {
         const isNegative = text.includes('-');
         const cleanText = text.replace('-', '').replace('Rp ', '').replace(/\./g, '');
         const value = parseInt(cleanText, 10);
@@ -58,12 +105,10 @@
         alerts.forEach(alert => {
             const closeBtn = alert.querySelector('.alert-close');
             
-            // Manual close
             if (closeBtn) {
                 closeBtn.addEventListener('click', () => dismissAlert(alert));
             }
             
-            // Auto dismiss after 5 seconds
             setTimeout(() => dismissAlert(alert), 5000);
         });
     }
@@ -76,7 +121,6 @@
     if (indexWrapper) {
         setupAlerts(indexWrapper);
 
-        // Animate table rows
         const rows = indexWrapper.querySelectorAll('.data-table tbody tr');
         rows.forEach((row, index) => {
             row.style.opacity = '0';
@@ -88,22 +132,20 @@
             }, index * 50);
         });
 
-        // Color code sisa column (negative values)
         const sisaCells = indexWrapper.querySelectorAll('td.text-right[data-counter]');
         sisaCells.forEach(cell => {
-            const parsed = parseRupiah(cell.textContent);
+            const parsed = parseRupiahOld(cell.textContent);
             if (parsed.value <= 0) {
                 cell.style.color = '#dc2626';
             }
         });
 
-        // Animate counter values
         const counterCells = indexWrapper.querySelectorAll('td[data-counter]');
         counterCells.forEach(cell => {
             const text = cell.textContent.trim();
             if (!text.includes('Rp')) return;
             
-            const parsed = parseRupiah(text);
+            const parsed = parseRupiahOld(text);
             if (isNaN(parsed.value)) return;
             
             animateCounter(cell, Math.abs(parsed.value), parsed.prefix, '', 800);
@@ -124,17 +166,19 @@
         const jenisSelect = createWrapper.querySelector('#jenis');
         const tahunSelect = createWrapper.querySelector('#tahun_anggaran_id');
         
-        // Format number input validation
-        nominalInput.addEventListener('input', () => {
-            const val = parseFloat(nominalInput.value);
-            if (val < 0 || isNaN(val)) {
+        // Init rupiah input
+        initRupiahInput(nominalInput);
+
+        // Validate parsed value
+        nominalInput?.addEventListener('input', () => {
+            const val = parseRupiah(nominalInput.value);
+            if (val < 0) {
                 nominalInput.classList.add('is-invalid');
             } else {
                 nominalInput.classList.remove('is-invalid');
             }
         });
 
-        // Auto-generate nama sumber based on jenis + tahun
         function generateNamaSumber() {
             const namaInput = createWrapper.querySelector('#nama_sumber');
             const jenis = jenisSelect.value;
@@ -156,13 +200,12 @@
             }
         }
 
-        jenisSelect.addEventListener('change', generateNamaSumber);
-        tahunSelect.addEventListener('change', generateNamaSumber);
+        jenisSelect?.addEventListener('change', generateNamaSumber);
+        tahunSelect?.addEventListener('change', generateNamaSumber);
 
-        // Form validation
         const form = createWrapper.querySelector('form');
-        form.addEventListener('submit', (e) => {
-            const nominal = parseFloat(nominalInput.value);
+        form?.addEventListener('submit', (e) => {
+            const nominal = parseRupiah(nominalInput.value);
             if (nominal < 0 || isNaN(nominal)) {
                 e.preventDefault();
                 alert('Nominal tidak boleh negatif');
@@ -181,12 +224,10 @@
     if (showWrapper) {
         setupAlerts(showWrapper);
 
-        // Animate progress bar
         const progressSection = showWrapper.querySelector('.progress-section[data-progress]');
         if (progressSection) {
             animateProgressBar(progressSection, '.progress-bar-fill');
             
-            // Color progress bar based on percentage
             const progressValue = parseFloat(progressSection.dataset.progress);
             const fill = progressSection.querySelector('.progress-bar-fill');
             if (fill && !isNaN(progressValue)) {
@@ -198,20 +239,18 @@
             }
         }
 
-        // Animate stat counters
         const statValues = showWrapper.querySelectorAll('.stat-value[data-counter]');
         statValues.forEach(stat => {
             const text = stat.textContent.trim();
             if (!text.includes('Rp')) return;
             
-            const parsed = parseRupiah(text);
+            const parsed = parseRupiahOld(text);
             if (isNaN(parsed.value)) return;
             
             const suffix = text.includes('%') ? '%' : '';
             animateCounter(stat, Math.abs(parsed.value), parsed.prefix, suffix, 1000);
         });
 
-        // Animate stat cards
         const statCards = showWrapper.querySelectorAll('.stat-card');
         statCards.forEach((card, index) => {
             card.style.opacity = '0';
@@ -237,12 +276,14 @@
         const nominalInput = editWrapper.querySelector('#nominal_awal');
         const alasanInput = editWrapper.querySelector('#alasan_perubahan');
         
-        // Validate minimum value
-        const minVal = parseFloat(nominalInput.min) || 0;
+        // Init rupiah input
+        initRupiahInput(nominalInput);
+
+        const minVal = parseRupiah(nominalInput?.dataset.min || '0') || 0;
         
-        nominalInput.addEventListener('input', () => {
-            const val = parseFloat(nominalInput.value);
-            const hint = nominalInput.closest('.form-group').querySelector('.form-hint.warning');
+        nominalInput?.addEventListener('input', () => {
+            const val = parseRupiah(nominalInput.value);
+            const hint = nominalInput.closest('.form-group')?.querySelector('.form-hint.warning');
             
             if (val < minVal || isNaN(val)) {
                 nominalInput.classList.add('is-invalid');
@@ -259,8 +300,7 @@
             }
         });
 
-        // Validate alasan length
-        alasanInput.addEventListener('input', () => {
+        alasanInput?.addEventListener('input', () => {
             if (alasanInput.value.length < 10) {
                 alasanInput.classList.add('is-invalid');
             } else {
@@ -268,15 +308,14 @@
             }
         });
 
-        // Form validation
         const form = editWrapper.querySelector('form');
-        form.addEventListener('submit', (e) => {
-            const nominal = parseFloat(nominalInput.value);
+        form?.addEventListener('submit', (e) => {
+            const nominal = parseRupiah(nominalInput.value);
             const alasan = alasanInput.value.trim();
             
             if (nominal < minVal || isNaN(nominal)) {
                 e.preventDefault();
-                alert(`Nominal minimal Rp ${new Intl.NumberFormat('id-ID').format(minVal)}`);
+                alert(`Nominal minimal ${formatRupiahDisplay(minVal)}`);
                 nominalInput.focus();
                 return;
             }
@@ -288,7 +327,6 @@
             }
         });
 
-        // Highlight changed fields
         const inputs = editWrapper.querySelectorAll('.form-input, .form-textarea');
         inputs.forEach(input => {
             const originalValue = input.value;

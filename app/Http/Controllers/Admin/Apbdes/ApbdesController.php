@@ -186,6 +186,10 @@ class ApbdesController extends Controller
 
     public function storeSumberDana(Request $request)
     {
+        $request->merge([
+            'nominal_awal' => str_replace('.', '', $request->input('nominal_awal')),
+        ]);
+
         $validated = $request->validate([
             'tahun_anggaran_id' => 'required|exists:tahun_anggarans,id',
             'jenis' => 'required|in:apbn,apbd_provinsi,bkk,pad,add,dd,silpa,lainnya',
@@ -226,6 +230,10 @@ class ApbdesController extends Controller
 
     public function updateSumberDana(Request $request, $id)
     {
+        $request->merge([
+            'nominal_awal' => str_replace('.', '', $request->input('nominal_awal')),
+        ]);
+
         $sumber = SumberDana::with('tahunAnggaran')->findOrFail($id);
 
         $validated = $request->validate([
@@ -314,6 +322,10 @@ class ApbdesController extends Controller
 
     public function storePengalokasian(Request $request)
     {
+        $request->merge([
+            'nominal' => str_replace('.', '', $request->input('nominal')),
+        ]);
+
         $validated = $request->validate([
             'sumber_dana_id' => 'required|exists:sumber_danas,id',
             'bidang_anggaran_id' => 'required|exists:bidang_anggarans,id',
@@ -336,8 +348,6 @@ class ApbdesController extends Controller
         $validated['created_by'] = auth()->id();
         $validated['status'] = 'direncanakan';
 
-        // FIX: Tidak recalculate di sini. Recalculate hanya saat approve/reject/revision/destroy.
-        // Alasan: pengalokasian baru status 'direncanakan', belum disetujui.
         PengalokasianDana::create($validated);
 
         return redirect()->route('admin.apbdes.pengalokasian.index')
@@ -355,7 +365,6 @@ class ApbdesController extends Controller
         $pengalokasian = PengalokasianDana::with(['sumberDana.tahunAnggaran', 'bidangAnggaran'])->findOrFail($id);
         $sumberDanas = SumberDana::tersedia()->withTahun()->get();
 
-        // FIX: Include sumber dana saat ini meski sudah habis/terpakai penuh
         if (!$sumberDanas->contains('id', $pengalokasian->sumber_dana_id)) {
             $sumberDanas->push($pengalokasian->sumberDana);
         }
@@ -367,6 +376,10 @@ class ApbdesController extends Controller
 
     public function updatePengalokasian(Request $request, $id)
     {
+        $request->merge([
+            'nominal' => str_replace('.', '', $request->input('nominal')),
+        ]);
+
         $pengalokasian = PengalokasianDana::with(['sumberDana.tahunAnggaran', 'bidangAnggaran'])->findOrFail($id);
 
         $validated = $request->validate([
@@ -517,6 +530,10 @@ class ApbdesController extends Controller
 
     public function storeRealisasi(Request $request)
     {
+        $request->merge([
+            'nominal_digunakan' => str_replace('.', '', $request->input('nominal_digunakan')),
+        ]);
+
         $validated = $request->validate([
             'pengalokasian_dana_id' => 'required|exists:pengalokasian_danas,id',
             'tahun' => 'required|integer',
@@ -571,6 +588,10 @@ class ApbdesController extends Controller
 
     public function updateRealisasi(Request $request, $id)
     {
+        $request->merge([
+            'nominal_digunakan' => str_replace('.', '', $request->input('nominal_digunakan')),
+        ]);
+
         $realisasi = RealisasiBulanan::with('pengalokasian')->findOrFail($id);
 
         $validated = $request->validate([

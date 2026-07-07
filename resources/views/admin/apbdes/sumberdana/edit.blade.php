@@ -92,7 +92,16 @@
 
                 <div class="form-group">
                     <label for="nominal_awal" class="form-label required">Nominal Awal (Rp)</label>
-                    <input type="number" name="nominal_awal" id="nominal_awal" class="form-input @error('nominal_awal') is-invalid @enderror" value="{{ old('nominal_awal', $sumber->nominal_awal) }}" min="{{ $sumber->nominal_terpakai }}" step="0.01" required>
+                    <div class="input-rupiah">
+                        <span class="rupiah-prefix">Rp</span>
+                        <input type="text" name="nominal_awal" id="nominal_awal" 
+                               class="form-input rupiah-input @error('nominal_awal') is-invalid @enderror" 
+                               value="{{ old('nominal_awal', number_format($sumber->nominal_awal, 0, ',', '.')) }}" 
+                               placeholder="0" 
+                               inputmode="numeric" 
+                               autocomplete="off" 
+                               required>
+                    </div>
                     @error('nominal_awal')
                         <span class="error-message">{{ $message }}</span>
                     @enderror

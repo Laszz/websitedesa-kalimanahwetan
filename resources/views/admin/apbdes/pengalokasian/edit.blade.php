@@ -89,7 +89,16 @@
                 <div class="form-row">
                     <div class="form-group form-group-half">
                         <label for="nominal" class="form-label required">Nominal Alokasi (Rp)</label>
-                        <input type="number" name="nominal" id="nominal" class="form-input @error('nominal') is-invalid @enderror" value="{{ old('nominal', $pengalokasian->nominal) }}" min="0" step="0.01" required>
+                        <div class="input-rupiah">
+                            <span class="rupiah-prefix">Rp</span>
+                            <input type="text" name="nominal" id="nominal" 
+                                   class="form-input rupiah-input @error('nominal') is-invalid @enderror" 
+                                   value="{{ old('nominal', number_format($pengalokasian->nominal, 0, ',', '.')) }}" 
+                                   placeholder="0" 
+                                   inputmode="numeric" 
+                                   autocomplete="off" 
+                                   required>
+                        </div>
                         @error('nominal')
                             <span class="error-message">{{ $message }}</span>
                         @enderror
