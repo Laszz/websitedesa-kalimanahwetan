@@ -8,11 +8,14 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping, WithStyles, WithCustomStartCell
+class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping, WithStyles, WithCustomStartCell, WithEvents
 {
     protected $penerimaBantuans;
+    protected $dataCount = 0;
 
     public function __construct($penerimaBantuans = null)
     {
@@ -21,15 +24,14 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
 
     public function collection()
     {
-        if ($this->penerimaBantuans) {
-            return $this->penerimaBantuans;
-        }
-        return PenerimaBantuan::with(['warga', 'jenisBantuan', 'creator'])->get();
+        $collection = $this->penerimaBantuans ?? PenerimaBantuan::with(['warga', 'jenisBantuan', 'creator'])->get();
+        $this->dataCount = $collection->count();
+        return $collection;
     }
 
     public function startCell(): string
     {
-        return 'A3';
+        return 'A4'; // ← PINDAH: Header mulai dari baris 4
     }
 
     public function headings(): array
@@ -89,8 +91,26 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
 
         $sheet->getRowDimension('1')->setRowHeight(30);
 
-        // === HEADER (Baris 3) ===
-        $sheet->getStyle('A3:J3')->applyFromArray([
+        // === SUB-JUDUL (Baris 2) ===
+        $sheet->setCellValue('A2', 'Desa Kalimanah Wetan');
+        $sheet->mergeCells('A2:J2');
+
+        $sheet->getStyle('A2')->applyFromArray([
+            'font' => [
+                'bold' => true,
+                'size' => 12,
+                'color' => ['rgb' => '475569'],
+            ],
+            'alignment' => [
+                'horizontal' => 'center',
+                'vertical' => 'center',
+            ],
+        ]);
+
+        $sheet->getRowDimension('2')->setRowHeight(25);
+
+        // === HEADER (Baris 4) ===
+        $sheet->getStyle('A4:J4')->applyFromArray([
             'font' => [
                 'bold' => true,
                 'color' => ['rgb' => 'FFFFFF'],
@@ -110,51 +130,43 @@ class PenerimaBantuanExport implements FromCollection, WithHeadings, WithMapping
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
 
-        // Border untuk header + data
-        $lastRow = $sheet->getHighestRow();
-        $sheet->getStyle("A3:J{$lastRow}")->applyFromArray([
-            'borders' => [
-                'allBorders' => [
-                    'borderStyle' => 'thin',
-                    'color' => ['rgb' => '000000'],
-                ],
-            ],
-        ]);
-
-        // Center alignment untuk No
-        $sheet->getStyle("A4:A{$lastRow}")->getAlignment()->setHorizontal('center');
-
-        // Status color coding
-        for ($row = 4; $row <= $lastRow; $row++) {
-            $statusCell = $sheet->getCell("F{$row}")->getValue();
-            if ($statusCell === 'Aktif') {
-                $sheet->getStyle("F{$row}")->getFont()->getColor()->setRGB('059669');
-            } elseif ($statusCell === 'Nonaktif') {
-                $sheet->getStyle("F{$row}")->getFont()->getColor()->setRGB('D97706');
-            } elseif ($statusCell === 'Dicabut') {
-                $sheet->getStyle("F{$row}")->getFont()->getColor()->setRGB('DC2626');
-            }
-        }
-
-        // === JUDUL BAWAH (Baris setelah data terakhir) ===
-        $footerRow = $lastRow + 2;
-        $sheet->setCellValue("A{$footerRow}", 'Desa Kalimanah Wetan');
-        $sheet->mergeCells("A{$footerRow}:J{$footerRow}");
-
-        $sheet->getStyle("A{$footerRow}")->applyFromArray([
-            'font' => [
-                'bold' => true,
-                'size' => 12,
-                'color' => ['rgb' => '475569'],
-            ],
-            'alignment' => [
-                'horizontal' => 'center',
-                'vertical' => 'center',
-            ],
-        ]);
-
-        $sheet->getRowDimension($footerRow)->setRowHeight(25);
-
         return [];
+    }
+
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                $sheet = $event->sheet->getDelegate();
+
+                // Hitung baris terakhir data (header di baris 4, data mulai baris 5)
+                $lastDataRow = 4 + $this->dataCount;
+
+                // Border untuk header + data
+                $sheet->getStyle("A4:J{$lastDataRow}")->applyFromArray([
+                    'borders' => [
+                        'allBorders' => [
+                            'borderStyle' => 'thin',
+                            'color' => ['rgb' => '000000'],
+                        ],
+                    ],
+                ]);
+
+                // Center alignment untuk No
+                $sheet->getStyle("A5:A{$lastDataRow}")->getAlignment()->setHorizontal('center');
+
+                // Status color coding
+                for ($row = 5; $row <= $lastDataRow; $row++) {
+                    $statusCell = $sheet->getCell("F{$row}")->getValue();
+                    if ($statusCell === 'Aktif') {
+                        $sheet->getStyle("F{$row}")->getFont()->getColor()->setRGB('059669');
+                    } elseif ($statusCell === 'Nonaktif') {
+                        $sheet->getStyle("F{$row}")->getFont()->getColor()->setRGB('D97706');
+                    } elseif ($statusCell === 'Dicabut') {
+                        $sheet->getStyle("F{$row}")->getFont()->getColor()->setRGB('DC2626');
+                    }
+                }
+            },
+        ];
     }
 }
