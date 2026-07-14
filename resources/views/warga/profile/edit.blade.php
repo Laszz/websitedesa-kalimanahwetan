@@ -88,8 +88,8 @@
                         <select id="status" name="status"
                                 class="@error('status') is-invalid @enderror" required>
                             <option value="">-- Pilih Status --</option>
-                            <option value="Belum Kawin" {{ old('status', $profile->status) === 'Belum Kawin' ? 'selected' : '' }}>Belum Menikah</option>
-                            <option value="Kawin" {{ old('status', $profile->status) === 'Kawin' ? 'selected' : '' }}>Menikah</option>
+                            <option value="Belum Menikah" {{ old('status', $profile->status) === 'Belum Menikah' ? 'selected' : '' }}>Belum Menikah</option>
+                            <option value="Menikah" {{ old('status', $profile->status) === 'Menikah' ? 'selected' : '' }}>Menikah</option>
                             <option value="Cerai Hidup" {{ old('status', $profile->status) === 'Cerai Hidup' ? 'selected' : '' }}>Cerai Hidup</option>
                             <option value="Cerai Mati" {{ old('status', $profile->status) === 'Cerai Mati' ? 'selected' : '' }}>Cerai Mati</option>
                         </select>
