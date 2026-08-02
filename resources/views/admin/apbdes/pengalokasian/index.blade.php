@@ -132,7 +132,6 @@
             
             @else
             <div class="empty-state">
-                <span class="empty-icon">📭</span>
                 <p class="empty-text">Belum ada pengalokasian dana</p>
                 <a href="{{ route('admin.apbdes.pengalokasian.create') }}" class="btn btn-primary">Buat Alokasi Pertama</a>
             </div>

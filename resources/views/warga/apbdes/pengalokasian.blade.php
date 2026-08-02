@@ -153,7 +153,7 @@
         <h3>Belum Ada Data Pengalokasian</h3>
         <p>Data pengalokasian dana untuk tahun ini belum tersedia.</p>
         <a href="{{ route('public.apbdes.index') }}" class="btn-back">
-            <i class="fas fa-arrow-left"></i> Kembali ke Ringkasan
+            Kembali ke Ringkasan
         </a>
     </div>
     @endforelse

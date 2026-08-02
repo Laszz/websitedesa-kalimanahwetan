@@ -100,7 +100,6 @@
             </div>
             @else
             <div class="empty-state">
-                <span class="empty-icon">📭</span>
                 <p class="empty-text">Belum ada tahun anggaran</p>
                 <a href="{{ route('admin.apbdes.tahun.create') }}" class="btn btn-primary">Buat Tahun Pertama</a>
             </div>

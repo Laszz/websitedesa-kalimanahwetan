@@ -133,6 +133,39 @@
 }
 
 /* ==========================================
+   INPUT ANGGARAN FORMAT RIBUAN
+========================================== */
+.jb-input-anggaran {
+    text-align: left;
+    font-family: 'Segoe UI', 'SF Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.jb-input-anggaran::placeholder {
+    text-align: left;
+    font-weight: 400;
+}
+
+/* Hilangkan spinner di Chrome/Safari/Edge untuk input number */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Alert success styling */
+.jb-alert-success {
+    background: #f0fdf4;
+    color: #166534;
+    border-left: 4px solid #22c55e;
+}
+
+/* ==========================================
    FORM INPUTS
 ========================================== */
 .jb-form-select,

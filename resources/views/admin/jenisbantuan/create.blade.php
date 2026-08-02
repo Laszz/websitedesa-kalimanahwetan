@@ -18,6 +18,13 @@
         </div>
     @endif
 
+    @if(session('success'))
+        <div class="alert jb-alert jb-alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+
     {{-- Form Card --}}
     <div class="card jb-form-card">
         <div class="card-header jb-form-card-header">
@@ -67,9 +74,23 @@
                         @enderror
                     </div>
 
+                    {{-- Anggaran per KK dengan Format Ribuan --}}
                     <div class="col-md-6 mb-3">
                         <label class="form-label jb-form-label">Anggaran per KK (Rp) <span class="jb-required">*</span></label>
-                        <input type="number" name="anggaran_per_kk" class="form-control jb-form-input @error('anggaran_per_kk') is-invalid @enderror" value="{{ old('anggaran_per_kk') }}" required>
+                        
+                        <input type="text" 
+                               id="anggaran_display" 
+                               class="form-control jb-form-input jb-input-anggaran @error('anggaran_per_kk') is-invalid @enderror" 
+                               value="{{ old('anggaran_per_kk') ? number_format(old('anggaran_per_kk'), 0, ',', '.') : '' }}" 
+                               placeholder="0" 
+                               required
+                               autocomplete="off">
+                        
+                        <input type="hidden" 
+                               name="anggaran_per_kk" 
+                               id="anggaran_real" 
+                               value="{{ old('anggaran_per_kk') }}">
+                        
                         @error('anggaran_per_kk')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

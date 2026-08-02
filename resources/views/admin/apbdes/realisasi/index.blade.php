@@ -117,7 +117,6 @@
 
             @else
             <div class="empty-state">
-                <span class="empty-icon">📭</span>
                 <p class="empty-text">Belum ada realisasi</p>
                 <a href="{{ route('admin.apbdes.realisasi.create') }}" class="btn btn-primary">Tambah Realisasi Pertama</a>
             </div>

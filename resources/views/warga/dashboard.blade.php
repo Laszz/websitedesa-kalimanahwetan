@@ -73,7 +73,7 @@
 <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="section-header-flex">
-            <h2 class="section-title" style="text-align: left;">📰 Berita Terbaru</h2>
+            <h2 class="section-title" style="text-align: left;">Berita Terbaru</h2>
             <a href="{{ route('berita.index') }}" class="btn-cta">Lihat Semua Berita</a>
         </div>
         <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

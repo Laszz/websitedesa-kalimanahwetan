@@ -199,7 +199,6 @@
             </div>
             @else
             <div class="empty-state">
-                <span class="empty-icon">📭</span>
                 <p>Belum ada tahun anggaran</p>
             </div>
             @endif

@@ -1,7 +1,7 @@
 <nav class="navbar">
     <div class="navbar-container">
         <!-- Logo -->
-        <a href="/" class="navbar-logo">
+        <a href="{{ auth()->check() ? route('warga.dashboard') : url('/') }}" class="navbar-logo">
             <img src="{{ asset('images/Logo.png') }}" alt="Logo Desa">
             <span>Desa Kalimanah Wetan</span>
         </a>
