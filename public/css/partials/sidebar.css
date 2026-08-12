@@ -1,6 +1,6 @@
 /* ============================================
    ADMIN SIDEBAR
-   ============================================ */
+============================================ */
 
 .admin-sidebar {
     position: fixed;
@@ -11,44 +11,50 @@
     background: #1e293b;
     color: #fff;
     z-index: 100;
-    transform: translateX(0);
-    transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
+    transition: transform .3s ease;
 }
 
+/* ============================================
+   HEADER
+============================================ */
+
 .admin-sidebar-header {
-    padding: 20px;
-    border-bottom: 1px solid #334155;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #334155;
 }
 
 .admin-sidebar-header h2 {
     font-size: 20px;
     font-weight: 700;
+    margin: 0;
 }
 
-/* Tombol close (mobile only) */
 .sidebar-close-btn {
     display: none;
-    background: none;
+    background: transparent;
     border: none;
     color: #fff;
     font-size: 22px;
     cursor: pointer;
-    padding: 4px 8px;
     border-radius: 6px;
-    transition: background 0.2s;
-    line-height: 1;
+    padding: 4px 8px;
+    transition: .2s;
 }
 
 .sidebar-close-btn:hover {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,.1);
 }
+
+/* ============================================
+   CONTENT
+============================================ */
 
 .admin-sidebar-content {
     flex: 1;
@@ -58,29 +64,35 @@
 .admin-sidebar-content nav {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
 }
 
-/* ===== Menu Link ===== */
-.admin-menu-link {
+/* ============================================
+   MENU
+============================================ */
+
+.admin-menu-link,
+.admin-menu-toggle {
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     padding: 12px 20px;
+    background: transparent;
+    border: none;
+    border-left: 3px solid transparent;
     color: #cbd5e1;
     text-decoration: none;
+    cursor: pointer;
     font-size: 14px;
     font-weight: 500;
-    transition: all 0.2s ease;
-    border-left: 3px solid transparent;
-    background: none;
-    border: none;
-    width: 100%;
-    cursor: pointer;
+    transition: .25s;
     font-family: inherit;
 }
 
-.admin-menu-link:hover {
+.admin-menu-link:hover,
+.admin-menu-toggle:hover {
     background: #334155;
     color: #fff;
     border-left-color: #60a5fa;
@@ -92,56 +104,62 @@
     border-left-color: #60a5fa;
 }
 
-/* ===== Menu Group (Submenu) ===== */
+/* ============================================
+   GROUP
+============================================ */
+
 .admin-menu-group {
     display: flex;
     flex-direction: column;
 }
 
-.admin-menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 16px;
-}
+/* ============================================
+   TOGGLE ICON
+============================================ */
 
 .toggle-icon {
-    font-size: 0.75rem;
-    transition: transform 0.3s ease;
-    margin-left: auto;
+    font-size: 12px;
+    transition: transform .3s ease;
 }
 
 .admin-menu-group.open .toggle-icon {
     transform: rotate(90deg);
 }
 
-/* ===== Submenu ===== */
+/* ============================================
+   SUBMENU
+============================================ */
+
 .admin-submenu {
-    display: none;
+    display: flex;
     flex-direction: column;
-    padding-left: 1rem;
-    margin-left: 1rem;
-    border-left: 2px solid #334155;
-    gap: 2px;
+
+    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+
+    margin-left: 18px;
+
+    border-left: 2px solid #334155;
+
+    transition: max-height .35s ease;
 }
 
 .admin-menu-group.open .admin-submenu {
-    display: flex;
+    max-height: 500px;
 }
 
 .admin-submenu-link {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
+
+    padding: 10px 18px;
+
     color: #94a3b8;
     text-decoration: none;
     font-size: 13px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border-radius: 6px;
+
+    transition: .25s;
+
     border-left: 3px solid transparent;
 }
 
@@ -157,11 +175,14 @@
     border-left-color: #60a5fa;
 }
 
-/* ===== Footer ===== */
+/* ============================================
+   FOOTER
+============================================ */
+
 .admin-sidebar-footer {
-    padding: 12px 0;
     border-top: 1px solid #334155;
     margin-top: auto;
+    padding: 12px 0;
 }
 
 .logout-link {
@@ -170,48 +191,54 @@
 
 .logout-link:hover {
     background: #ef4444 !important;
-    color: #fff !important;
+    color: white !important;
 }
 
-/* ===== Hidden ===== */
+/* ============================================
+   HIDDEN
+============================================ */
+
 .hidden {
     display: none !important;
 }
 
 /* ============================================
-   RESPONSIVE — MOBILE
-   ============================================ */
+   MOBILE
+============================================ */
 
-@media (max-width: 768px) {
-    .admin-sidebar {
-        transform: translateX(-100%);
-        width: 240px;
-        box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+@media (max-width:768px){
+
+    .admin-sidebar{
+        width:240px;
+        transform:translateX(-100%);
+        box-shadow:4px 0 20px rgba(0,0,0,.3);
     }
-    
-    .admin-sidebar.active {
-        transform: translateX(0);
+
+    .admin-sidebar.active{
+        transform:translateX(0);
     }
-    
-    .sidebar-close-btn {
-        display: block;
+
+    .sidebar-close-btn{
+        display:block;
     }
-    
-    .admin-sidebar-header {
-        padding: 16px;
+
+    .admin-sidebar-header{
+        padding:16px;
     }
-    
-    .admin-sidebar-header h2 {
-        font-size: 18px;
+
+    .admin-sidebar-header h2{
+        font-size:18px;
     }
-    
-    .admin-menu-link {
-        padding: 10px 16px;
-        font-size: 13px;
+
+    .admin-menu-link,
+    .admin-menu-toggle{
+        padding:10px 16px;
+        font-size:13px;
     }
-    
-    .admin-submenu-link {
-        padding: 8px 12px;
-        font-size: 12px;
+
+    .admin-submenu-link{
+        padding:8px 14px;
+        font-size:12px;
     }
+
 }
